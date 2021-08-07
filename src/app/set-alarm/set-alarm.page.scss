@@ -1,0 +1,77 @@
+.form {
+    ion-list {
+        ion-item {
+            padding: 15px 20px 4px 20px;
+            margin-bottom: 7px;
+
+            .item_inner {
+                h2 {
+                    margin: 0;
+                    color: var(--text-dark);
+                    font-size: 1rem;
+                    font-weight: 600;
+                    padding-bottom: 13px;
+                }
+
+                .days {
+                    padding-bottom: 10px;
+
+                    .day {
+                        background: rgba(127, 127, 127, 0.39) !important;
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 50%;
+                        position: relative;
+                        margin-right: 13px;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            bottom: 0;
+                            right: 0;
+                            margin: auto;
+                            width: 0;
+                            height: 0;
+                            background: var(--primary);
+                            border-radius: 50%;
+                            transition: all .3s;
+
+                        }
+
+                        h3 {
+                            margin: 0;
+                            color: var(--white);
+                            font-size: .8rem;
+                            font-weight: 400;
+                            text-align: center;
+                            line-height: 28px;
+                            position: relative;
+                            z-index: 99;
+                        }
+
+                        &.active {
+                            &::before {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+
+                h4 {
+                    margin: 0;
+                    color: var(--white);
+                    font-size: 0.87rem !important;
+                    font-weight: 400 !important;
+
+                    ion-icon {
+                        font-size: 1.5rem;
+                        height: 21px;
+                    }
+                }
+            }
+        }
+    }
+}

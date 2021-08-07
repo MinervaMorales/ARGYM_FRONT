@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <div class="title-inner d-flex">
+
+                <span class="end">
+                    <!--                    <ion-icon class="zmdi zmdi-alert-circle ion-text-end"></ion-icon>-->
+                    <ion-icon class="zmdi zmdi-volume-up ion-text-end"></ion-icon>
+                </span>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_img" fullscreen>
+    <div class="container ion-text-center animate__animated animate__zoomIn">
+        <h1>{{'good_going' | translate}} !</h1>
+        <h2>{{'take_a_rest' | translate}}</h2>
+        <div class="timer">
+            <circle-progress [maxPercent]="100" [percent]="19" [showTitle]="false" [showUnits]="false" [showSubtitle]="false" [responsive]="true" [radius]="74" [outerStrokeWidth]="6" [space]="-6" [innerStrokeWidth]="6" [outerStrokeLinecap]="'square'" [outerStrokeColor]="'var(--primary)'" [innerStrokeColor]="'#50565d'" [animation]="true" [animationDuration]="300"></circle-progress>
+            <div class="text_box">
+                <h2>19</h2>
+                <h3>{{'secs' | translate}}</h3>
+            </div>
+        </div>
+        <h4>{{'skip' | translate}}</h4>
+    </div>
+
+    <ion-list lines="none"  class="animate__animated animate__fadeInUp">
+        <h2>{{'next' | translate}} <span>{{'workout' | translate}}</span></h2>
+        <ion-item>
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Bench Press Push UPS</h3>
+                    <h4>x20</h4>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>

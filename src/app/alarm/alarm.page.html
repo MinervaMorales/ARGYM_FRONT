@@ -1,0 +1,61 @@
+<ion-header class="bg_transparent">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+              <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            {{'alarms' | translate}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_img" fullscreen>
+    <ion-list lines="none">
+        
+        <ion-item class="animate__animated animate__fadeInUp" [ngClass]="item1 ? 'item disable' : 'item'">
+            <div class="item_inner">
+                <div class="toggle_box d-flex">
+                    <h2 (click)="set_alarm()">07:20 am <small>Everyday</small></h2>
+                    <ion-toggle mode="md" class="end" checked (click)="toggle1()"></ion-toggle>
+                </div>
+                <p class="d-flex" (click)="set_alarm()">
+                    It's Workout time. Its me time. !
+                    <ion-icon class="zmdi zmdi-more-vert end ion-text-end"></ion-icon>
+                </p>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" [ngClass]="item2 ? 'item disable' : 'item'">
+            <div class="item_inner">
+                <div class="toggle_box d-flex">
+                    <h2 (click)="set_alarm()">08:00 am<small>Mon, Tue, Wed, Thu, Fri</small></h2>
+                    <ion-toggle  mode="md" class="end" checked (click)="toggle2()"></ion-toggle>
+                </div>
+                <p class="d-flex" v>
+                    Healthy food is ready.
+                    <ion-icon class="zmdi zmdi-more-vert end ion-text-end"></ion-icon>
+                </p>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" [ngClass]="item3 ? 'item disable' : 'item'">
+            <div class="item_inner">
+                <div class="toggle_box d-flex">
+                    <h2 (click)="set_alarm()">07:00 am<small>Mon, Tue, Wed, Thu, Fri</small></h2>
+                    <ion-toggle  mode="md" class="end" (click)="toggle3()"></ion-toggle>
+                </div>
+                <p class="d-flex" (click)="set_alarm()">
+                    Evening walk
+                    <ion-icon class="zmdi zmdi-more-vert end ion-text-end"></ion-icon>
+                </p>
+            </div>
+        </ion-item>
+    </ion-list>
+    
+    <ion-fab class="animate__animated animate__zoomIn" vertical="bottom" horizontal="end" slot="fixed">
+		<ion-fab-button (click)="set_alarm()">
+			<span>+</span>
+		</ion-fab-button>
+	</ion-fab>
+</ion-content>

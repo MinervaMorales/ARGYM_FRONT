@@ -1,0 +1,70 @@
+<ion-header class="bg_transparent">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            {{'set_alarm' | translate}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_img bg_blur" fullscreen>
+    <div class="form">
+        <ion-list lines="none">
+
+            <ion-item lines="none" class="animate__animated animate__fadeInUp">
+                <div class="item_inner">
+                    <h2>{{'alarm_time' | translate}}</h2>
+                    <ion-datetime mode="ios" displayFormat="h:mm a" value="10:45"></ion-datetime>
+                </div>
+            </ion-item>
+            <ion-item lines="none" class="animate__animated animate__fadeInUp">
+                <div class="item_inner">
+                    <h2>{{'days' | translate}}</h2>
+                    <div class="days d-flex">
+                        <div [ngClass]="day1 ? 'day active' : 'day'" (click)="toggleDay1()">
+                            <h3>M</h3>
+                        </div>
+                        <div [ngClass]="day2 ? 'day active' : 'day'" (click)="toggleDay2()">
+                            <h3>T</h3>
+                        </div>
+                        <div [ngClass]="day3 ? 'day active' : 'day'" (click)="toggleDay3()">
+                            <h3>W</h3>
+                        </div>
+                        <div [ngClass]="day4 ? 'day active' : 'day'" (click)="toggleDay4()">
+                            <h3>T</h3>
+                        </div>
+                        <div [ngClass]="day5 ? 'day active' : 'day'" (click)="toggleDay5()">
+                            <h3>F</h3>
+                        </div>
+                        <div [ngClass]="day6 ? 'day active' : 'day'" (click)="toggleDay6()">
+                            <h3>S</h3>
+                        </div>
+                        <div [ngClass]="day7 ? 'day active' : 'day'" (click)="toggleDay7()">
+                            <h3>S</h3>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+
+            <ion-item lines="none" class="animate__animated animate__fadeInUp">
+                <div class="item_inner">
+                    <h2>{{'label' | translate}}</h2>
+                    <ion-input mode="md" class="end" type="name" value="It's Workout time. It's my time. !"></ion-input>
+                </div>
+            </ion-item>
+
+            <ion-item lines="none" class="animate__animated animate__fadeInUp">
+                <div class="item_inner">
+                    <h2>{{'alarm_rington' | translate}}</h2>
+                    <h4 class="d-flex">Alarm Clock 4
+                        <ion-icon class="zmdi zmdi-chevron-right ion-text-end end"></ion-icon>
+                    </h4>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <ion-button size="large" expand="block" class="btn animate__animated animate__fadeInUp">{{'set_alarm' | translate}}</ion-button>
+    </div>
+</ion-content>

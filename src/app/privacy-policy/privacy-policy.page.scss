@@ -1,0 +1,65 @@
+ion-header {
+    backdrop-filter: saturate(83%) blur(6px);
+    background: rgba(127, 127, 127, 0.39) !important;
+
+    .logo {
+        position: relative;
+        z-index: 99;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        min-height: 150px;
+        --animate-duration: .35s;
+
+        img {
+            display: block;
+            margin: auto;
+            max-width: 220px;
+        }
+    }
+}
+
+.container {
+
+    backdrop-filter: blur(5px);
+    background: rgba(127, 127, 127, 0.39) !important;
+    border-radius: 10px;
+    width: calc(100% - 40px);
+    margin: 20px auto 10px auto;
+    padding: 20px 25px;
+    min-height: calc(100vh - 242px);
+    max-height: calc(100vh - 242px);
+    overflow: hidden;
+    overflow-y: auto;
+    --animate-duration: .2s;
+
+    h2 {
+        margin: 0;
+        color: var(--text-dark);
+        font-size: 0.78rem;
+        font-weight: 400;
+        padding-bottom: 10px;
+    }
+
+    p {
+        margin: 0;
+        color: var(--white);
+        font-size: 0.85rem;
+        font-weight: 400;
+        line-height: 22px;
+        padding-bottom: 21px;
+        letter-spacing: .5px;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    h3 {
+        margin: 0;
+        color: var(--white);
+        font-weight: 600;
+        font-size: .95rem;
+        padding-bottom: 1px;
+    }
+}
