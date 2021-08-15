@@ -15,7 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { APP_CONFIG, BaseAppConfig } from './app.config';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
- 
+import { UserService } from 'src/services/user/user.service';
+import { Storage } from '@ionic/storage';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -26,7 +27,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   entryComponents: [],
    imports: [
 	  BrowserModule, 
-	  IonicModule.forRoot(), 
+	  IonicModule.forRoot(),
       AppRoutingModule,
       HttpClientModule,
       TranslateModule,    
@@ -40,7 +41,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [ AndroidPermissions,
     Camera,
+    UserService,
     StatusBar,
+    Storage,
     SplashScreen,
     { provide: APP_CONFIG, useValue: BaseAppConfig },      
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

@@ -11,23 +11,24 @@
     <div class="form animate__animated animate__zoomIn" >
         <h2 class="ion-text-center">{{"sign_in_now" | translate}}</h2>
         <ion-list lines="none">
-
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
             <ion-item lines="none">
-                <ion-input mode="md" type="email" placeholder="{{'email_address' | translate}}"></ion-input>
+                <ion-input mode="md" formControlName="Email" type="email" placeholder="{{'email_address' | translate}}"></ion-input>
             </ion-item>
 
             <ion-item lines="none">
                 <div class="d-flex">
-                    <ion-input mode="md" type="password" placeholder="{{'password' | translate}}"></ion-input>
+                    <ion-input mode="md" formControlName="Password" type="password" placeholder="{{'password' | translate}}"></ion-input>
 
                     <h3 (click)="forgot_password()">{{'forgot' | translate}}?</h3>
                 </div>
             </ion-item>
+            </form>
         </ion-list>
 
-        <ion-button size="large" expand="block" class="btn" (click)="home()">{{'sign_in' | translate}}</ion-button>
+        <ion-button size="large" expand="block" class="btn" (click)="login()">{{'sign_in' | translate}}</ion-button>
 
-        <div class="social_login">
+       <!-- <div class="social_login">
             <ion-row>
                 <ion-col size="6">
                     <ion-button size="large" expand="block" fill="outline" class="btn" (click)="home()">
@@ -42,7 +43,7 @@
                     </ion-button>
                 </ion-col>
             </ion-row>
-        </div>
+        </div>-->
         <div class="not_registered">
             <h3 class="ion-text-center"> {{'not_registered_yet' | translate}}?</h3>
             <ion-button size="large" expand="block" fill="outline" class="btn" (click)="sign_up()">

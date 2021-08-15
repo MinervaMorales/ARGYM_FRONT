@@ -20,7 +20,7 @@ export class ObjectDetectionPage implements OnInit {
 
   public constructor(private camera: Camera, private platform:Platform, private androidPermissions: AndroidPermissions) 
   { 
-    this.platform.ready().then(() => {
+    /*this.platform.ready().then(() => {
 
       this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
         result => console.log('Has permission?',result.hasPermission),
@@ -29,7 +29,7 @@ export class ObjectDetectionPage implements OnInit {
       
       this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA]);
 
-   })
+   })*/
 
   }
 

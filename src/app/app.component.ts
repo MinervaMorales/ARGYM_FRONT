@@ -8,6 +8,8 @@ import { MyEvent } from 'src/services/myevent.services';
 import { APP_CONFIG, AppConfig } from './app.config'; 
 import { BuyappalertPage } from '../app/buyappalert/buyappalert.page'
 import { VtPopupPage } from './vt-popup/vt-popup.page' 
+import { Storage } from '@ionic/storage';
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-root',
@@ -18,6 +20,8 @@ export class AppComponent implements OnInit {
   rtlSide = "left"; 
   rtlSideMenu = "start";
   showSideMenu = false;
+  userPhoto;
+  username;
    public selectedIndex = 0;
    public appPages = [
     {
@@ -25,7 +29,17 @@ export class AppComponent implements OnInit {
       url: '/home',
       icon: 'zmdi zmdi-home'
     }, 
-     {
+    {
+      title: 'routines',
+      url: '/workouts',
+      icon: 'zmdi zmdi-run'
+    },
+    {
+      title: 'detect-object',
+      url: '/object-detection',
+      icon: 'zmdi zmdi-camera'
+    },
+    /* {
       title: 'set_alarm',
       url: '/alarm',
       icon: 'zmdi zmdi-alarm'
@@ -44,17 +58,7 @@ export class AppComponent implements OnInit {
       title: 'change_language',
       url: '/change-language',
       icon: 'zmdi zmdi-globe'
-    }, 
-    {
-      title: 'share_app',
-//      url: '',
-      icon: 'zmdi zmdi-share'
-    },
-    {
-      title: 'detect-object',
-      url: '/object-detection',
-      icon: 'zmdi zmdi-globe'
-    }
+    }*/
     ];
   constructor(
     @Inject(APP_CONFIG) public config: AppConfig,
@@ -62,7 +66,7 @@ export class AppComponent implements OnInit {
     private modalController: ModalController, 
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private translate: TranslateService, private myEvent: MyEvent) {
+    private translate: TranslateService, private myEvent: MyEvent, public storage: Storage) {
     this.initializeApp();
     this.myEvent.getLanguageObservable().subscribe(value => {
       this.navCtrl.navigateRoot(['./']);
@@ -103,13 +107,14 @@ export class AppComponent implements OnInit {
     setTimeout(() => this.showSideMenu = true, 100);
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     /* if (this.config.demoMode) {
       setTimeout(() => {
         this.presentModal()
       }, 15000)
     } */ 
-
+    await this.storage.create();
+    this.decodeToken()
   }
   profile() {
     this.navCtrl.navigateRoot(['./profile']);
@@ -120,6 +125,19 @@ export class AppComponent implements OnInit {
       .then(modalElement => {
         modalElement.present()
       })
+  }
+
+  public async decodeToken()
+  {
+    let token = await this.storage.get( 'TOKEN' )
+    console.log('Home token', token);
+    let decoded: any = jwt_decode(token);
+    let userData: string = decoded.unique_name.split(";");
+    console.log("name", userData[0])
+    this.username = userData[0];
+    this.userPhoto = userData[2];
+    console.log("email", userData[1])
+    console.log("photo", userData[2]);
   }
 
   async presentModal () {

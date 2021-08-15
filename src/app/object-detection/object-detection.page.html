@@ -12,9 +12,17 @@
 
 <ion-content class="bg_img" fullscreen>
 
+    <div class="container animate__animated animate__fadeInUp">
+        <p>
+            {{'take-photo-warnings' | translate}}
+        </p>
+        <div class="img_box center_img">
+          <img src="assets/imgs/detect-object.png" class="crop_img">
+      </div>
+    </div>
   <ion-fab class="animate__animated animate__zoomIn" vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button>
-    <ion-button (click)="getPicture()" type="submit">+</ion-button>
+    <ion-button (click)="getPicture()" type="submit" fill="clear" color="light" size="large"><i class="zmdi zmdi-camera"></i></ion-button>
   </ion-fab-button>
 </ion-fab>
 </ion-content>

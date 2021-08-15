@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'app-home',
@@ -8,10 +10,14 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  constructor(private route: Router) { }
+  public storage: Storage = this.injector.get( Storage );
+
+  constructor(private route: Router, protected injector: Injector) { }
 
   ngOnInit() {
   }
+
+  
 
  workouts() {
     this.route.navigate(['./workouts']);

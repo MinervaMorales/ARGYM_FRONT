@@ -38,6 +38,7 @@
     "set_alarm": "Ajustar alarma",
     "change_language": "Cambiar idioma",
     "share_app": "Compartir aplicación",
+    "routines": "Rutinas",
     "rate_us": "Nos califica",
     "developed_by": "Desarrollado por",
     "buy_this_app": "Comprar esta App",
@@ -55,6 +56,10 @@
     "alarm_rington": "alarma tono",
     "select_language": "Seleccione el idioma",
     "save": "Salvar",
-    "alarm_time": "Hora de alarma"
+    "alarm_time": "Hora de alarma",
+    "take-photo-warnings": "Debes enfocar todo el objeto a reconocer",
+    "invalid-data": "Datos Invalidos",
+    "try-again": "Correo o Clave incorrecta. Por favor verifique su información e intente nuevamente",
+    "bt-ok": "Ok"
 
 }

@@ -38,6 +38,7 @@
     "set_alarm": "Set Alarm",
     "change_language": "Change Language",
     "share_app": "Share App",
+    "routines": "Routines",
     "rate_us": "Rate us",
     "developed_by": "Developed By",
     "buy_this_app": "Buy this App",
@@ -55,6 +56,10 @@
     "alarm_rington": "Alarm Ringtone",
     "select_language": "Select Language",
     "save": "Save",
-    "alarm_time": "Alarm Time"
+    "alarm_time": "Alarm Time",
+    "take-photo-warnings": "You must focus all the object to be recognize",
+    "invalid-data": "Invalid Credentials",
+    "try-again": "Invalid email or password. Please check your information and try again",
+    "bt-ok": "Ok"
 
 }

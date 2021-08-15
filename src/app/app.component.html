@@ -6,23 +6,23 @@
                     <div class="profile_box" (click)="profile()">
                         <ion-menu-toggle class="d-flex" auto-hide="false">
                             <div class="img_box center_img">
-                                <img src="assets/imgs/profile.png" class="crop_img">
+                                <img src="{{userPhoto}}" class="crop_img">
                             </div>
                             <div class="text_box">
-                                <h2>Sam Smith</h2>
+                                <h2>{{username}}</h2>
                                 <h3>{{"view_profile" | translate}}</h3>
                             </div>
                         </ion-menu-toggle>
                     </div>
                 </ion-header>
-                <div class="buy_this_app" *ngIf="config.demoMode" (click)="buyappalert()">
+               <!--<div class="buy_this_app" *ngIf="config.demoMode" (click)="buyappalert()">
                     <ion-menu-toggle auto-hide="false">
                         <h2>
                             <ion-icon class="zmdi zmdi-shopping-cart"></ion-icon>
                             {{"buy_this_app" | translate}}
                         </h2>
                     </ion-menu-toggle>
-                </div>
+                </div>--> 
                 <ion-content>
                     <ion-list lines="none">
                         <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
