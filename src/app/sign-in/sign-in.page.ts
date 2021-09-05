@@ -3,9 +3,11 @@ import { AlertController, LoadingController, NavController } from '@ionic/angula
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user/user.service';
+import { Events } from 'src/services/events/events.services';
 import { Users } from 'src/models/Users';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-sign-in',
@@ -23,10 +25,11 @@ export class SignInPage implements OnInit {
   private alertCtrl: AlertController = this.injector.get(AlertController);
   public loading: LoadingController = this.injector.get( LoadingController );
   public translate: TranslateService = this.injector.get( TranslateService );
+  public event: Events = this.injector.get(Events); 
   public storage: Storage = this.injector.get( Storage );
 
   
-  public constructor(protected injector: Injector ) 
+  public constructor(protected injector: Injector) 
   { 
 
   }
@@ -66,10 +69,8 @@ export class SignInPage implements OnInit {
     try
     {
       let response = await (await this.userService.Login( this.user )).objModel.access_Token;
-      console.log("response", response);
       this.storage.set( 'TOKEN', response );
-      console.log("TOKEN", await this.storage.get( 'TOKEN' ));
-      
+      this.saveUser(response);
       this.home();
     }
     catch ( e )
@@ -84,4 +85,20 @@ export class SignInPage implements OnInit {
       })).present();
     }
   }
+
+  public saveUser(token: string)
+  {
+    let user = new Users();
+    let decoded: any = jwt_decode(token);
+    let userData: string = decoded.unique_name.split(";");
+
+    user.Id = Number(userData[0]);
+    user.Name = userData[1];
+    user.Email = userData[2];
+    user.Photo = userData[3];
+    this.storage.set( 'USER', user );
+
+    this.event.setUserData(user);
+  }
+
 }

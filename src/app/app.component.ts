@@ -4,12 +4,12 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
 import { Constants } from 'src/models/contants.models';
-import { MyEvent } from 'src/services/myevent.services';
+import { Events } from 'src/services/events/events.services';
 import { APP_CONFIG, AppConfig } from './app.config'; 
 import { BuyappalertPage } from '../app/buyappalert/buyappalert.page'
 import { VtPopupPage } from './vt-popup/vt-popup.page' 
 import { Storage } from '@ionic/storage';
-import jwt_decode from "jwt-decode";
+import { Users } from 'src/models/Users';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +17,11 @@ import jwt_decode from "jwt-decode";
   styleUrls: ['app.component.scss'] 
 })
 export class AppComponent implements OnInit {
-  rtlSide = "left"; 
-  rtlSideMenu = "start";
-  showSideMenu = false;
+
+  public rtlSide: string = "left"; 
+  public rtlSideMenu: string = "start";
+  public showSideMenu: boolean = false;
+  public user: Users = new Users();
   userPhoto;
   username;
    public selectedIndex = 0;
@@ -39,12 +41,12 @@ export class AppComponent implements OnInit {
       url: '/object-detection',
       icon: 'zmdi zmdi-camera'
     },
-    /* {
-      title: 'set_alarm',
-      url: '/alarm',
-      icon: 'zmdi zmdi-alarm'
-    }, 
      {
+      title: 'logout',
+      url: '/sign-in',
+      icon: 'zmdi zmdi-sign-in'
+    }, 
+    /* {
       title: 'blogs',
       url: '/blogs',
       icon: 'zmdi zmdi-assignment'
@@ -66,15 +68,24 @@ export class AppComponent implements OnInit {
     private modalController: ModalController, 
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private translate: TranslateService, private myEvent: MyEvent, public storage: Storage) {
+    private translate: TranslateService, 
+    private event: Events, 
+    public storage: Storage) 
+  {
     this.initializeApp();
-    this.myEvent.getLanguageObservable().subscribe(value => {
+
+    this.event.getLanguageObservable().subscribe(value => {
       this.navCtrl.navigateRoot(['./']);
       this.globalize(value);
     });
+
+    this.event.getUserObservable().subscribe(value=>{
+      this.getUser();
+    })
   }
 
-  initializeApp() {
+  public initializeApp() 
+  {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
@@ -84,14 +95,16 @@ export class AppComponent implements OnInit {
     });
   }
 
-  globalize(languagePriority) {
+  public globalize(languagePriority) 
+  {
     this.translate.setDefaultLang("en");
     let defaultLangCode = this.config.availableLanguages[0].code;
     this.translate.use(languagePriority && languagePriority.length ? languagePriority : defaultLangCode);
     this.setDirectionAccordingly(languagePriority && languagePriority.length ? languagePriority : defaultLangCode);
   }
 
-  setDirectionAccordingly(lang: string) {
+  public setDirectionAccordingly(lang: string) 
+  {
     this.showSideMenu = false;
     switch (lang) {
       case 'iw':
@@ -107,19 +120,18 @@ export class AppComponent implements OnInit {
     setTimeout(() => this.showSideMenu = true, 100);
   }
 
-  async ngOnInit() {
-    /* if (this.config.demoMode) {
-      setTimeout(() => {
-        this.presentModal()
-      }, 15000)
-    } */ 
+  public async ngOnInit() 
+  {
     await this.storage.create();
-    this.decodeToken()
   }
-  profile() {
+
+  public profile() 
+  {
     this.navCtrl.navigateRoot(['./profile']);
   }    
- buyappalert () {
+ 
+  public buyappalert () 
+  {
     this.modalController
       .create({ component: BuyappalertPage })
       .then(modalElement => {
@@ -127,23 +139,17 @@ export class AppComponent implements OnInit {
       })
   }
 
-  public async decodeToken()
+  public async getUser()
   {
-    let token = await this.storage.get( 'TOKEN' )
-    console.log('Home token', token);
-    let decoded: any = jwt_decode(token);
-    let userData: string = decoded.unique_name.split(";");
-    console.log("name", userData[0])
-    this.username = userData[0];
-    this.userPhoto = userData[2];
-    console.log("email", userData[1])
-    console.log("photo", userData[2]);
+    this.user = new Users(await this.storage.get( 'USER' ))
   }
 
-  async presentModal () {
+  public async presentModal () 
+  {
     const modal = await this.modalController.create({
       component: VtPopupPage
     })
     return await modal.present()
-  }    
+  }   
+ 
 }

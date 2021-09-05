@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { APP_CONFIG, AppConfig } from '../app.config';
-import { MyEvent } from 'src/services/myevent.services';
+import { Events } from 'src/services/events/events.services';
 import { Constants } from 'src/models/contants.models';
 
 @Component({
@@ -13,7 +13,7 @@ export class ChangeLanguagePage implements OnInit {
   defaultLanguageCode;
   languages: Array<{ code: string, name: string }>;
 
-  constructor(@Inject(APP_CONFIG) private config: AppConfig, private myEvent: MyEvent) {
+  constructor(@Inject(APP_CONFIG) private config: AppConfig, private event: Events) {
     this.languages = this.config.availableLanguages;
     this.defaultLanguageCode = config.availableLanguages[0].code;
     let defaultLang = window.localStorage.getItem(Constants.KEY_DEFAULT_LANGUAGE);
@@ -29,6 +29,6 @@ export class ChangeLanguagePage implements OnInit {
 
   languageConfirm() {
     window.localStorage.setItem(Constants.KEY_DEFAULT_LANGUAGE, this.defaultLanguageCode);
-    this.myEvent.setLanguageData(this.defaultLanguageCode);
+    this.event.setLanguageData(this.defaultLanguageCode);
   }
 }
