@@ -41,4 +41,10 @@ export class RoutineCategoryService {
   {
     return await this.http.get<ResponseDTO>( `${environment.apiURL}​/RoutineCategory/byMachineAndRoutineCategory/${idEquipment},${idRoutineCategory}`).toPromise();
   }
+
+  public async GetByRoutineCategoryLevel( idRoutineCategoryLevel: number ): Promise<ResponseDTO>
+  {
+    console.log(idRoutineCategoryLevel);
+    return await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/byRoutineCategoryLevel/${idRoutineCategoryLevel}`).toPromise();
+  }
 }

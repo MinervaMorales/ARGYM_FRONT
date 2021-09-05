@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { RoutineCategory } from 'src/models/RoutineCategory';
+import { RoutineCategoryLevel } from 'src/models/RoutineCategoryLevel';
+import { DataService } from 'src/services/data/data.service';
 import { RoutineCategoryWithLevelsDTO } from 'src/services/dtos/RoutineCategoryWithLevelsDTO';
 import { RoutineCategoryService } from 'src/services/routineCategory/routine-category.service';
 
@@ -20,7 +22,7 @@ export class RoutineCategoriesPage implements OnInit {
   private alertCtrl: AlertController = this.injector.get(AlertController);
   public loading: LoadingController = this.injector.get( LoadingController );
   public translate: TranslateService = this.injector.get( TranslateService );
-  
+
   constructor(private route: Router, protected injector: Injector) { }
 
   ngOnInit() {
@@ -28,9 +30,9 @@ export class RoutineCategoriesPage implements OnInit {
   }
 
   
-  public workouts() 
+  public workouts(routineCategory: RoutineCategory, level: RoutineCategoryLevel) 
   {
-    this.route.navigate(['./workouts']);
+    this.route.navigate(['./routine-category-level-workouts'], { queryParams: { routineCategory: JSON.stringify(routineCategory), routineCategoryLevel: JSON.stringify(level) }});
   } 
 
   public async getRoutineCategories()

@@ -83,7 +83,15 @@ const routes: Routes = [
   {
     path: 'routine-categories',
     loadChildren: () => import('./routine-categories/routine-categories.module').then( m => m.RoutineCategoriesPageModule)
+  },
+  {
+    path: 'routine-category-level-workouts',
+    loadChildren: () => import('./routine-category-level-workouts/routine-category-level-workouts.module').then( m => m.RoutineCategoryLevelWorkoutsPageModule)
+  },  {
+    path: 'workout-routine-detail',
+    loadChildren: () => import('./workout-routine-detail/workout-routine-detail.module').then( m => m.WorkoutRoutineDetailPageModule)
   }
+
 ];
 
 @NgModule({

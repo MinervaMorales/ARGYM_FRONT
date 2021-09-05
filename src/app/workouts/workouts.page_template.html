@@ -1,0 +1,388 @@
+<ion-header class="bg_transparent">
+    <ion-toolbar>
+        <div class="toolbar-inner d-flex">
+            <ion-buttons slot="start">
+                <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+            </ion-buttons>
+            <ion-title>
+                <div class="title-inner">
+                    <div class="workout_detail d-flex">
+                        <h3>Chest<br>Intermediate</h3>
+                        <div class="level end">
+                            <h4 class="ion-text-end">{{"lavel" | translate}}</h4>
+                            <span class="end">
+                                <ion-icon class="zmdi zmdi-flash ion-text-end active"></ion-icon>
+                                <ion-icon class="zmdi zmdi-flash ion-text-end active"></ion-icon>
+                                <ion-icon class="zmdi zmdi-flash ion-text-end"></ion-icon>
+                            </span>
+                        </div>
+                    </div>
+                    <h5>11 {{'workouts' | translate}}</h5>
+                </div>
+            </ion-title>
+        </div>
+    </ion-toolbar>
+    <div class="workout_img center_img">
+        <img src="assets/imgs/workout_banner.png" class="crop_img">
+    </div>
+</ion-header>
+
+<ion-content class="bg_img" fullscreen>
+    <ion-list lines="none">
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_2.png">
+                </div>
+                <div class="text_box">
+                    <h3>Jumping Jack</h3>
+                    <h4>x30</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Incline Push UPS</h3>
+                    <h4>x16</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_5.png">
+                </div>
+                <div class="text_box">
+                    <h3>Push UPS</h3>
+                    <h4>x16</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Bench Press Push UPS</h3>
+                    <h4>x20</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_3.png">
+                </div>
+                <div class="text_box">
+                    <h3>Wide Hand Push UPS</h3>
+                    <h4>x12</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_4.png">
+                </div>
+                <div class="text_box">
+                    <h3>Short Hand Push UPS</h3>
+                    <h4>x10</h4>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_2.png">
+                </div>
+                <div class="text_box">
+                    <h3>Jumping Jack</h3>
+                    <h4>x30</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Incline Push UPS</h3>
+                    <h4>x16</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_5.png">
+                </div>
+                <div class="text_box">
+                    <h3>Push UPS</h3>
+                    <h4>x16</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Bench Press Push UPS</h3>
+                    <h4>x20</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_3.png">
+                </div>
+                <div class="text_box">
+                    <h3>Wide Hand Push UPS</h3>
+                    <h4>x12</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_4.png">
+                </div>
+                <div class="text_box">
+                    <h3>Short Hand Push UPS</h3>
+                    <h4>x10</h4>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_2.png">
+                </div>
+                <div class="text_box">
+                    <h3>Jumping Jack</h3>
+                    <h4>x30</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Incline Push UPS</h3>
+                    <h4>x16</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_5.png">
+                </div>
+                <div class="text_box">
+                    <h3>Push UPS</h3>
+                    <h4>x16</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Bench Press Push UPS</h3>
+                    <h4>x20</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_3.png">
+                </div>
+                <div class="text_box">
+                    <h3>Wide Hand Push UPS</h3>
+                    <h4>x12</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_4.png">
+                </div>
+                <div class="text_box">
+                    <h3>Short Hand Push UPS</h3>
+                    <h4>x10</h4>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_2.png">
+                </div>
+                <div class="text_box">
+                    <h3>Jumping Jack</h3>
+                    <h4>x30</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Incline Push UPS</h3>
+                    <h4>x16</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_5.png">
+                </div>
+                <div class="text_box">
+                    <h3>Push UPS</h3>
+                    <h4>x16</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Bench Press Push UPS</h3>
+                    <h4>x20</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_3.png">
+                </div>
+                <div class="text_box">
+                    <h3>Wide Hand Push UPS</h3>
+                    <h4>x12</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_4.png">
+                </div>
+                <div class="text_box">
+                    <h3>Short Hand Push UPS</h3>
+                    <h4>x10</h4>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_2.png">
+                </div>
+                <div class="text_box">
+                    <h3>Jumping Jack</h3>
+                    <h4>x30</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Incline Push UPS</h3>
+                    <h4>x16</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_5.png">
+                </div>
+                <div class="text_box">
+                    <h3>Push UPS</h3>
+                    <h4>x16</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_1.png">
+                </div>
+                <div class="text_box">
+                    <h3>Bench Press Push UPS</h3>
+                    <h4>x20</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_3.png">
+                </div>
+                <div class="text_box">
+                    <h3>Wide Hand Push UPS</h3>
+                    <h4>x12</h4>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+            <div class="item_inner d-flex">
+                <div class="img_box">
+                    <img src="assets/imgs/workouts_4.png">
+                </div>
+                <div class="text_box">
+                    <h3>Short Hand Push UPS</h3>
+                    <h4>x10</h4>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
