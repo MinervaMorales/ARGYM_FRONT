@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { StartWorkoutPageRoutingModule } from './start-workout-routing.module';
 
 import { StartWorkoutPage } from './start-workout.page';
+import { AudioPlayerComponent } from '../components/audio-player/audio-player.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { StartWorkoutPage } from './start-workout.page';
      TranslateModule,   
     StartWorkoutPageRoutingModule
   ],
-  declarations: [StartWorkoutPage]
+  declarations: [StartWorkoutPage, 
+    AudioPlayerComponent]
 })
 export class StartWorkoutPageModule {}

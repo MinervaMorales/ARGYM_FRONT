@@ -34,6 +34,7 @@
     "cordova-plugin-android-permissions": "^1.1.2",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-res": "^0.15.3",
+    "howler": "^2.2.3",
     "jwt-decode": "^3.1.2",
     "ng-circle-progress": "^1.6.0",
     "ng2-date-picker": "^11.0.0",
