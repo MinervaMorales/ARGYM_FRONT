@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { WorkoutRoutineDetailPageRoutingModule } from './workout-routine-detail-routing.module';
 
 import { WorkoutRoutineDetailPage } from './workout-routine-detail.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule, 
     WorkoutRoutineDetailPageRoutingModule
   ],
   declarations: [WorkoutRoutineDetailPage]
