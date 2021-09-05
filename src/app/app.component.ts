@@ -10,6 +10,8 @@ import { BuyappalertPage } from '../app/buyappalert/buyappalert.page'
 import { VtPopupPage } from './vt-popup/vt-popup.page' 
 import { Storage } from '@ionic/storage';
 import { Users } from 'src/models/Users';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Camera, CameraOptions} from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-root',
@@ -70,6 +72,8 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private translate: TranslateService, 
     private event: Events, 
+    private camera: Camera, 
+    private androidPermissions: AndroidPermissions,
     public storage: Storage) 
   {
     this.initializeApp();
