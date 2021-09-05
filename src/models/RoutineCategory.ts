@@ -1,15 +1,15 @@
 export class RoutineCategory{
-    public Id: number;
-    public Name: string;
-    public Description: string;
-    public Photo: string;
+    public id: number;
+    public name: string;
+    public description: string;
+    public photo: string;
 
     public constructor(data?:any){
         if(data){
-            this.Id = data.Id;
-            this.Name = data.Name;
-            this.Description = data.Description;
-            this.Photo = data.Photo;
+            this.id = data.id;
+            this.name = data.name;
+            this.description = data.description;
+            this.photo = data.photo;
         }
     }
 }
