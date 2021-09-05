@@ -62,6 +62,7 @@
     "invalid-data": "Datos Invalidos",
     "try-again": "Correo o Clave incorrecta. Por favor verifique su información e intente nuevamente",
     "bt-ok": "Ok",
-    "routines":"Rutinas"
+    "error": "Error",
+    "unexpected": "Ha ocurrido un error inesperado"
 
 }

@@ -4,6 +4,7 @@ export class RoutineCategoryLevel{
     public Name: string;
     public Description: string;
     public Photo: string;
+    public IdRoutineCategory: number;
     
     public constructor(data?:any){
         if(data){
@@ -11,6 +12,7 @@ export class RoutineCategoryLevel{
             this.Name = data.Name;
             this.Description = data.Description;
             this.Photo = data.Photo;
+            this.IdRoutineCategory = data.IdRoutineCategory;
         }
     }
 }

@@ -62,6 +62,7 @@
     "invalid-data": "Invalid Credentials",
     "try-again": "Invalid email or password. Please check your information and try again",
     "bt-ok": "Ok",
-    "routines":"Routines"
+    "error": "Error",
+    "unexpected": "An unexpected error has occurred"
 
 }

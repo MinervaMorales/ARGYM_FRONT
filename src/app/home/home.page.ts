@@ -17,16 +17,23 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
-  
-
- workouts() {
+  public workouts() 
+  {
     this.route.navigate(['./workouts']);
   } 
 
-  toRecognize(){
+  public toRecognize()
+  {
     this.route.navigate(['./object-detection'])
   }
- alarm() {
+
+  public alarm() 
+  {
     this.route.navigate(['./alarm']);
   }  
+
+  public routineCategories()
+  {
+    this.route.navigate(['./routine-categories']);
+  }
 }
