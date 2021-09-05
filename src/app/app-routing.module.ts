@@ -79,6 +79,10 @@ const routes: Routes = [
   {
     path: 'object-detection',
     loadChildren: () => import('./object-detection/object-detection.module').then( m => m.ObjectDetectionPageModule)
+  },
+  {
+    path: 'routine-categories',
+    loadChildren: () => import('./routine-categories/routine-categories.module').then( m => m.RoutineCategoriesPageModule)
   }
 ];
 
