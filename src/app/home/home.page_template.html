@@ -1,0 +1,662 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            <div class="title-inner d-flex">
+                Work<span>Out</span>
+                <ion-icon class="zmdi zmdi-alarm ion-text-end end" (click)="alarm()"></ion-icon>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_img" fullscreen>
+    <ion-list lines="none">
+        <h2>Chest <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-1.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Intermediate</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-2.png" class="crop_img">
+                </div>
+
+                <div class="text_box">
+                    <h3>Chest<br>Advanced</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <h2>Arm <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-9.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Intermediate</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+        <h2>Chest <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-1.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Intermediate</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-2.png" class="crop_img">
+                </div>
+
+                <div class="text_box">
+                    <h3>Chest<br>Advanced</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <h2>Arm <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-9.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Intermediate</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+        <h2>Chest <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-1.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Intermediate</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-2.png" class="crop_img">
+                </div>
+
+                <div class="text_box">
+                    <h3>Chest<br>Advanced</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <h2>Arm <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-9.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Intermediate</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+        <h2>Chest <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-1.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Intermediate</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-2.png" class="crop_img">
+                </div>
+
+                <div class="text_box">
+                    <h3>Chest<br>Advanced</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <h2>Arm <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-9.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Intermediate</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+        <h2>Chest <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-1.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Intermediate</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-2.png" class="crop_img">
+                </div>
+
+                <div class="text_box">
+                    <h3>Chest<br>Advanced</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <h2>Arm <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-9.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Intermediate</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+        <h2>Chest <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-1.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Intermediate</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-2.png" class="crop_img">
+                </div>
+
+                <div class="text_box">
+                    <h3>Chest<br>Advanced</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <h2>Arm <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-9.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Intermediate</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+        <h2>Chest <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-1.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Chest<br>Intermediate</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-2.png" class="crop_img">
+                </div>
+
+                <div class="text_box">
+                    <h3>Chest<br>Advanced</h3>
+                    <h4>13 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <h2>Arm <span>{{'workout' | translate}}</span></h2>
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-9.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Beginner</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img src="assets/imgs/img-3.png" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h3>Arm<br>Intermediate</h3>
+                    <h4>11 {{'workouts' | translate}}</h4>
+                </div>
+
+                <div class="level">
+                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>

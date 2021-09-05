@@ -12,14 +12,47 @@
 
 <ion-content class="bg_img" fullscreen>
 
-    <div class="container animate__animated animate__fadeInUp">
+    <div *ngIf='!flag' class="container animate__animated animate__fadeInUp">
         <p>
             {{'take-photo-warnings' | translate}}
         </p>
-        <div class="img_box center_img">
-          <img src="assets/imgs/detect-object.png" class="crop_img">
+        <div  style="text-align: center;margin-top: 15vh;">
+          <img src="assets/imgs/detect-object.png" height="100px" width="100px" alt="">
+        </div>
       </div>
-    </div>
+      <div *ngIf='flag' class="container animate__animated animate__fadeInUp">
+        <div>
+          <img [src]='tag?.objModel?.equipment?.photo' alt="">
+        </div>
+        <div class="text_box" style="text-align: center;">
+          <h3>{{tag?.objModel?.equipment?.name | translate }}</h3>
+        </div>
+        
+        <br/>
+        <br/>
+        <div>
+          <p>{{tag?.objModel?.equipment?.description | translate}}</p>
+        </div>
+        <br/>
+        <br/>
+        <div>
+          <h3>{{'routines' | translate}}</h3>
+          <div>
+            <ion-slides pager="false" [options]="slideOptions" #slideWithNav (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+              <ion-slide *ngFor='let routine of tag?.objModel?.routines' (click)="SearchByMachineAndRoutineCategory(tag?.objModel?.equipment.Id,routine.Id)">
+                  <div class="slide_inner">
+                    <h3 class="ion-text-center">{{routine.name}}</h3>  
+                      <div class="text_box img_box">
+                          <img [src]='routine.photo'>
+                      </div>
+                      <p>{{routine.description}}</p>
+                  </div>
+              </ion-slide>
+            </ion-slides>
+          </div>
+        </div>
+      </div>
+    
   <ion-fab class="animate__animated animate__zoomIn" vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button>
     <ion-button (click)="getPicture()" type="submit" fill="clear" color="light" size="large"><i class="zmdi zmdi-camera"></i></ion-button>
