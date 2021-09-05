@@ -14,7 +14,7 @@
     <div class="form">
         <div class="profile_img animate__animated animate__zoomIn">
             <div class="img_box center_img">
-                <img src="assets/imgs/profile.png" class="crop_img">
+                <img src="{{user.Photo}}" class="crop_img">
             </div>
             <ion-icon class="zmdi zmdi-camera"></ion-icon>
         </div>
@@ -22,10 +22,16 @@
             <ion-item lines="none" class="animate__animated animate__fadeInUp">
                 <div class="item_inner d-flex">
                     <ion-label position="stacked">{{'user_neme' | translate}}</ion-label>
-                    <ion-input mode="md" class="end ion-text-end" type="name" value="Sam Smith"></ion-input>
+                    <ion-input mode="md" class="end ion-text-end" type="name" value="{{user.Name}}"></ion-input>
                 </div>
             </ion-item>
-
+            <ion-item lines="none" class="animate__animated animate__fadeInUp">
+                <div class="item_inner d-flex">
+                    <ion-label position="stacked">{{'email_address' | translate}}</ion-label>
+                    <ion-input mode="md" class="end ion-text-end" type="name" value="{{user.Email}}"></ion-input>
+                </div>
+            </ion-item>
+        <!--
             <ion-item lines="none" class="animate__animated animate__fadeInUp">
                 <div class="item_inner d-flex">
                     <ion-label position="stacked">{{'gender' | translate}}</ion-label>
@@ -36,14 +42,6 @@
                     <ion-icon class="zmdi zmdi-caret-down ion-text-end"></ion-icon>
                 </div>
             </ion-item>
-
-            <ion-item lines="none" class="animate__animated animate__fadeInUp">
-                <div class="item_inner d-flex">
-                    <ion-label position="stacked">{{'email_address' | translate}}</ion-label>
-                    <ion-input mode="md" class="end ion-text-end" type="name" value="samsmith@mail.com"></ion-input>
-                </div>
-            </ion-item>
-
             <ion-item lines="none" class="animate__animated animate__fadeInUp">
                 <div class="item_inner d-flex">
                     <ion-label position="stacked">{{'birthdate' | translate}}</ion-label>
@@ -68,7 +66,7 @@
                     </ion-select>
                     <ion-icon class="zmdi zmdi-caret-down ion-text-end"></ion-icon>
                 </div>
-            </ion-item>
+            </ion-item>-->
         </ion-list>
 
         <ion-button size="large" expand="block"  class="btn animate__animated animate__fadeInUp">{{'update_profile' | translate}}</ion-button>
