@@ -1,4 +1,4 @@
-<ion-header class="bg_transparent">
+<ion-header class="bg_img">
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
@@ -17,23 +17,6 @@
 
 
 <ion-content fullscreen>
-    <iframe src="../assets/arscenes/sentadilla-zumo.html" style="position:absolute; width: 100%; height: 100%;"></iframe>
+    <iframe #iframeScene src="../assets/arscenes/sentadilla-zumo.html" style="position:absolute; width: 100%; height: 100%;"></iframe>
 </ion-content>
-
-<ion-footer class="ion-no-border  animate__animated animate__fadeInUp">
-    <ion-row>
-        <ion-col size="6">
-            <h2 class="d-flex">
-                <ion-icon class="zmdi zmdi-chevron-left"></ion-icon>
-                Incline Push ups
-            </h2>
-        </ion-col>
-
-        <ion-col size="6" class="ion-text-end d-flex">
-            <h2 class="d-flex end">
-                Wide Push ups
-                  <ion-icon class="zmdi zmdi-chevron-right ion-text-end"></ion-icon>
-            </h2>
-        </ion-col>
-    </ion-row>
-</ion-footer>
+<app-audio-player #audioPlayer [audio]="'./assets/audio/leg-extension.mp3'"></app-audio-player>

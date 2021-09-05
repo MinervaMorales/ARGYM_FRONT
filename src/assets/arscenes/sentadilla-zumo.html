@@ -18,10 +18,11 @@
             embedded
             gesture-detector
         ><!--https://cdn.glitch.com/0cbf313d-fcae-4c85-bf6c-af26b450ab6a%2Fasset.gltf?v=1627253210888-->
+        <!--https://cdn.glitch.com/2cb8ab60-7503-4850-9778-01e9d4fb5a6c%2Fpajaro.gltf?v=1628729475466 pajaro-->
             <a-assets timeout="10000000">
                 <a-asset-item
                     id="animated-asset"
-                    src="https://cdn.glitch.com/2cb8ab60-7503-4850-9778-01e9d4fb5a6c%2Fpajaro.gltf?v=1628729475466"
+                    src="https://cdn.glitch.com/64466ef4-fb99-4cb5-bcf7-12a96bf5e9a0%2Fasset.gltf?v=1628730887576"
                 ></a-asset-item>
             </a-assets>
 
@@ -40,6 +41,7 @@
                     scale="0.050280996541719985 0.050280996541719985 0.050280996541719985"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
+                    play-on-scan
                     class="clickable"
                     gesture-handler
                 ></a-entity>
@@ -47,5 +49,18 @@
 
             <a-entity camera></a-entity>
         </a-scene>
+        <script>
+            
+            AFRAME.registerComponent('play-on-scan', {
+            init: function () {
+                markerA.addEventListener("markerFound", function () {
+                    console.log("on found!!!")
+                    markerA.setAttribute('animation-mixer', {clip: '*', loop: 'once'});
+                });
+            }
+            });
+            markerA.addEventListener("markerFound", (e)=>{ window.parent.postMessage('true', '*'); })
+            markerA.addEventListener("markerLost", (e)=>{ window.parent.postMessage('false', '*'); })
+        </script>
     </body>
 </html>
