@@ -18,6 +18,9 @@ export class ObjectDetectionPage implements OnInit {
       mediaType: this.camera.MediaType.PICTURE
   };
 
+  tag:any
+  flag:boolean
+
   public constructor(private camera: Camera, private platform:Platform, private androidPermissions: AndroidPermissions) 
   { 
     /*this.platform.ready().then(() => {
@@ -49,10 +52,29 @@ export class ObjectDetectionPage implements OnInit {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ "image": response})
       };
-      await fetch('http://192.168.0.102:5000/image', requestOptions)
-          .then(response => console.log("RESPONSE", response.json()))
+     
+      await fetch('http://192.168.0.109:5000/image', requestOptions)
+          .then(prediction => prediction.json() )
+          .then(data=>{
+            this.tag=data
+            console.log(data)
+            return fetch('https://192.168.0.109:5001/RoutineCategory/byMachineWithString?id='+data)
+            .then(prediction_result=>prediction_result.json())
+            .then(data_result=>{
+              console.log(data_result)
+              this.flag=true
+              this.tag=data_result
+            })
+            ;
+          })
 
         return response;
+        
+    }
+
+    public  SearchByMachineAndRoutineCategory(equipmentId,routineId){
+      alert(equipmentId)
+      alert(routineId)
     }
 
     private async get(): Promise<string>

@@ -61,6 +61,7 @@
     "take-photo-warnings": "You must focus all the object to be recognize",
     "invalid-data": "Invalid Credentials",
     "try-again": "Invalid email or password. Please check your information and try again",
-    "bt-ok": "Ok"
+    "bt-ok": "Ok",
+    "routines":"Routines"
 
 }

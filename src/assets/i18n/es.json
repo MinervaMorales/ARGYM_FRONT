@@ -61,6 +61,7 @@
     "take-photo-warnings": "Debes enfocar todo el objeto a reconocer",
     "invalid-data": "Datos Invalidos",
     "try-again": "Correo o Clave incorrecta. Por favor verifique su información e intente nuevamente",
-    "bt-ok": "Ok"
+    "bt-ok": "Ok",
+    "routines":"Rutinas"
 
 }

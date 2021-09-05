@@ -14,7 +14,7 @@ export class UserService {
   
   public async Login( user: Users ): Promise<ResponseDTO>
   {
-    return await this.http.post<ResponseDTO>( `${environment.apiURL}/Token`, user ).toPromise();
+    return await this.http.post<ResponseDTO>( `${environment.apiURL}/Token`, user, {} ).toPromise();
   }
 
   public async Insert( user: Users ): Promise<ResponseDTO>

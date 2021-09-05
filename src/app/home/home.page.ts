@@ -22,6 +22,10 @@ export class HomePage implements OnInit {
  workouts() {
     this.route.navigate(['./workouts']);
   } 
+
+  toRecognize(){
+    this.route.navigate(['./object-detection'])
+  }
  alarm() {
     this.route.navigate(['./alarm']);
   }  
