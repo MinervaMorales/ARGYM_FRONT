@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Component, Injector, OnInit } from '@angular/core';
+import { AlertController, LoadingController, Platform } from '@ionic/angular';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { RoutineCategoryService } from 'src/services/routineCategory/routine-category.service';
+import { ImageProcessingService } from 'src/services/ImageProcessing/image-processing.service';
 
 @Component({
   selector: 'app-object-detection',
@@ -21,7 +25,16 @@ export class ObjectDetectionPage implements OnInit {
   tag:any
   flag:boolean
 
-  public constructor(private camera: Camera, private platform:Platform, private androidPermissions: AndroidPermissions) 
+  private route: Router = this.injector.get(Router);
+  private alertCtrl: AlertController = this.injector.get(AlertController);
+  public loading: LoadingController = this.injector.get( LoadingController );
+  public translate: TranslateService = this.injector.get( TranslateService );
+  public routineCategoryService: RoutineCategoryService=this.injector.get(RoutineCategoryService);
+  public imageProcessingService: ImageProcessingService=this.injector.get(ImageProcessingService)
+  public routinesByMachine: any[]
+  public responseImagePredicted:any
+
+  public constructor(private camera: Camera, private platform:Platform, private androidPermissions: AndroidPermissions,protected injector: Injector) 
   { 
     /*this.platform.ready().then(() => {
 
@@ -44,37 +57,57 @@ export class ObjectDetectionPage implements OnInit {
         this.options.destinationType = this.camera.DestinationType.DATA_URL;
         this.options.encodingType = this.camera.EncodingType.JPEG;
         this.options.mediaType = this.camera.MediaType.PICTURE;
-
         const response = await this.get();
 
-        const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ "image": response})
-      };
+       
      
-      await fetch('http://192.168.0.109:5000/image', requestOptions)
-          .then(prediction => prediction.json() )
-          .then(data=>{
-            this.tag=data
-            console.log(data)
-            return fetch('https://192.168.0.109:5001/RoutineCategory/byMachineWithString?id='+data)
-            .then(prediction_result=>prediction_result.json())
-            .then(data_result=>{
-              console.log(data_result)
-              this.flag=true
-              this.tag=data_result
-            })
-            ;
-          })
+     
 
-        return response;
+        let responseImagePredicted =await this.ProcessingImage(response)
+        console.log(responseImagePredicted)
+
+        this.tag=await this.GetRoutinesByMachineString(responseImagePredicted)
+        console.log(this.tag)
+
+        return responseImagePredicted;
+
         
     }
 
-    public  SearchByMachineAndRoutineCategory(equipmentId,routineId){
-      alert(equipmentId)
-      alert(routineId)
+    public async GetRoutinesByMachineString(str:string){
+      
+      this.loading.create();
+      try
+      {
+        
+        this.routinesByMachine = await (await this.routineCategoryService.GetByMachineWithString(str)).objModel;
+        this.flag=true
+        return this.routinesByMachine
+        
+      
+      }
+      catch ( e )
+      {
+        console.log(e);
+        this.loading.dismiss();
+
+        return await (await this.alertCtrl.create({
+          header: this.translate.instant('error'),
+          message: this.translate.instant('unexpected'),
+          buttons: [{ text: this.translate.instant( "bt-ok" )}]
+        })).present();
+      }
+    }
+
+    public async ProcessingImage(response:string){
+      return this.responseImagePredicted= await (await this.imageProcessingService.PredictImage({image:response}));
+    }
+
+    public  SearchByMachineAndRoutineCategory(routine){
+      
+      console.log(routine)
+      console.log(this.tag?.objModel)
+      
     }
 
     private async get(): Promise<string>

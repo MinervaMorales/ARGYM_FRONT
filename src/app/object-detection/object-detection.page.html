@@ -20,27 +20,28 @@
           <img src="assets/imgs/detect-object.png" height="100px" width="100px" alt="">
         </div>
       </div>
+      
       <div *ngIf='flag' class="container animate__animated animate__fadeInUp">
         <div>
-          <img [src]='tag?.objModel?.equipment?.photo' alt="">
+          <img [src]='tag?.equipment?.photo' alt="">
         </div>
         <div class="text_box" style="text-align: center;">
-          <h3>{{tag?.objModel?.equipment?.name | translate }}</h3>
+          <h3>{{tag?.equipment?.name | translate }}</h3>
         </div>
         
         <br/>
         <br/>
         <div>
-          <p>{{tag?.objModel?.equipment?.description | translate}}</p>
+          <p>{{tag?.equipment?.description | translate}}</p>
         </div>
         <br/>
         <br/>
-        <div>
+        <!--<div>
           <h3>{{'routines' | translate}}</h3>
           <div>
             <ion-slides pager="false" [options]="slideOptions" #slideWithNav (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
-              <ion-slide *ngFor='let routine of tag?.objModel?.routines' (click)="SearchByMachineAndRoutineCategory(tag?.objModel?.equipment.Id,routine.Id)">
-                  <div class="slide_inner">
+              <ion-slide *ngFor='let routine of tag?.routines' >
+                  <div class="slide_inner" (click)="SearchByMachineAndRoutineCategory(routine)">
                     <h3 class="ion-text-center">{{routine.name}}</h3>  
                       <div class="text_box img_box">
                           <img [src]='routine.photo'>
@@ -50,8 +51,14 @@
               </ion-slide>
             </ion-slides>
           </div>
-        </div>
+        </div>-->
+        <ion-footer class="ion-no-border">
+          <ion-button size="large" shape="full" class="btn" (click)="languageConfirm()">
+              {{'seeRoutines' | translate}}
+          </ion-button>
+      </ion-footer>
       </div>
+     
     
   <ion-fab class="animate__animated animate__zoomIn" vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button>

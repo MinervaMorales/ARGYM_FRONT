@@ -63,6 +63,7 @@
     "try-again": "Correo o Clave incorrecta. Por favor verifique su información e intente nuevamente",
     "bt-ok": "Ok",
     "error": "Error",
-    "unexpected": "Ha ocurrido un error inesperado"
+    "unexpected": "Ha ocurrido un error inesperado",
+    "seeRoutines":"Ver rutinas"
 
 }

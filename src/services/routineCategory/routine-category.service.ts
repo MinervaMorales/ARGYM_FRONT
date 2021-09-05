@@ -34,7 +34,7 @@ export class RoutineCategoryService {
   
   public async GetByMachineWithString( id: string ): Promise<ResponseDTO>
   {
-    return await this.http.get<ResponseDTO>( `${environment.apiURL}​/RoutineCategory​/byMachineWithString?id=${id}`).toPromise();
+     return await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/byMachineWithString?id=${id}`).toPromise();
   }
 
   public async GetByMachineAndRoutineCategory( idEquipment: number, idRoutineCategory ): Promise<ResponseDTO>
