@@ -1,0 +1,44 @@
+<ion-header class="bg_transparent">
+  <ion-toolbar>
+      <div class="toolbar-inner d-flex">
+          <ion-buttons slot="start">
+              <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+          </ion-buttons>
+          <ion-title>
+              <div class="title-inner">
+                  <div class="workout_detail d-flex">
+                      <h3>{{routineCategory?.name | uppercase}}<br>{{routineCategoryLevel?.name}}</h3>
+                      <div class="level end">
+                          <h4 class="ion-text-end">{{"lavel" | translate}}</h4>
+                          <span class="end">
+                              <ion-icon class="zmdi zmdi-flash ion-text-end active"></ion-icon>
+                              <ion-icon class="zmdi zmdi-flash ion-text-end active"></ion-icon>
+                              <ion-icon class="zmdi zmdi-flash ion-text-end"></ion-icon>
+                          </span>
+                      </div>
+                  </div>
+                  <h5>11 {{'workouts' | translate}}</h5>
+              </div>
+          </ion-title>
+      </div>
+  </ion-toolbar>
+  <div class="workout_img center_img">
+      <img src="assets/imgs/workout_banner.png" class="crop_img">
+  </div>
+</ion-header>
+
+<ion-content class="bg_img" fullscreen>
+  <ion-list *ngFor="let exercise of exerciseList" lines="none">
+      <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail()">
+          <div class="item_inner d-flex">
+              <div class="img_box">
+                  <img src="{{exercise.photo}}">
+              </div>
+              <div class="text_box">
+                  <h3>{{exercise.exercise}}</h3>
+                  <h4>x{{exercise.repetitions}}</h4>
+              </div>
+          </div>
+      </ion-item>
+  </ion-list>
+</ion-content>
