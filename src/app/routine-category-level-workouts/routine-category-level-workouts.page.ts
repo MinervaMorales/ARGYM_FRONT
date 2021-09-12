@@ -61,9 +61,9 @@ export class RoutineCategoryLevelWorkoutsPage implements OnInit {
     }
   }
 
-  public workout_detail() 
+  public workout_detail(exercise: RoutineCategoryLevelExerciseDTO) 
   {
-      this.router.navigate(['./workout-detail']);
+      this.router.navigate(['./workout-routine-detail'], { queryParams: { exercise: JSON.stringify(exercise)}});
   } 
 
 

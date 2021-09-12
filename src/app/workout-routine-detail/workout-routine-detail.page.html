@@ -1,54 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
-      </ion-buttons>
-      <ion-title>
-      </ion-title>
-  </ion-toolbar>
+  <app-slide #slide [objectList]="exercisePhotosList" [title]="exercise?.exercise" [text]="exercise?.repetitions"></app-slide>
 </ion-header>
 
-
 <ion-content class="bg_img " fullscreen>
-  <div class="silder_box">
-      <ion-slides pager="false" [options]="slideOptions" #slideWithNav (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
-          <ion-slide>
-              <div class="slide_inner">
-                  <div class="img_box">
-                      <img src='assets/imgs/workouts_5.png'>
-                  </div>
-                  <h2 class="ion-text-center">Push UPS <span>x12</span></h2>
-              </div>
-          </ion-slide>
-      </ion-slides>
-
-      <div class="slides_btn d-flex">
-          <ion-icon class="zmdi zmdi-chevron-left ion-text-center" (click)="slidePrev(sliderOne,slideWithNav)" [class.disabled]="sliderOne.isBeginningSlide"></ion-icon>
-
-          <ion-icon class="zmdi zmdi-chevron-right ion-text-center end" (click)="slideNext(sliderOne,slideWithNav)" [class.disabled]="sliderOne.isEndSlide"></ion-icon>
-      </div>
-  </div>
-
-  <div class="text-container animate__animated animate__fadeInUp">
-      <!--        <h2>24 March 18</h2>-->
+  <div style="height: 100%;" class="text-container animate__animated animate__fadeInUp">
       <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-      </p>
-      <p>
-          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-      </p>
-
-      <!--        <h3>1. You will become a clone.</h3>-->
-      <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-      </p>
-      <p>
-          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+          {{exercise?.exerciseDescription}}
       </p>
   </div>
 </ion-content>
 
 
 <ion-footer class="ion-no-border animate__animated animate__fadeInUp">
-  <ion-button size="large" expand="full" class="btn" (click)="start_workout()">{{'let_starts' | translate}}</ion-button>
+  <ion-button size="large" expand="full" class="btn" (click)="start_workout(exercise)">{{'let_starts' | translate}}</ion-button>
 </ion-footer>
