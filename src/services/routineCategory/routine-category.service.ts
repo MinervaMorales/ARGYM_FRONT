@@ -10,6 +10,10 @@ export class RoutineCategoryService {
 
   constructor(private http: HttpClient) { }
 
+  categoriesByMachine:any
+
+  categoriesByMachineAndRoutine:any
+
   
   public async Get(): Promise<ResponseDTO>
   {
@@ -34,12 +38,14 @@ export class RoutineCategoryService {
   
   public async GetByMachineWithString( id: string ): Promise<ResponseDTO>
   {
-     return await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/byMachineWithString?id=${id}`).toPromise();
+    this.categoriesByMachine=await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/byMachineWithString?id=${id}`).toPromise();
+    return this.categoriesByMachine;
   }
 
-  public async GetByMachineAndRoutineCategory( idEquipment: number, idRoutineCategory ): Promise<ResponseDTO>
+  public async GetByMachineAndRoutineCategory( idEquipment: number, idRoutineCategory:  number ): Promise<ResponseDTO>
   {
-    return await this.http.get<ResponseDTO>( `${environment.apiURL}​/RoutineCategory/byMachineAndRoutineCategory/${idEquipment},${idRoutineCategory}`).toPromise();
+    this.categoriesByMachineAndRoutine=await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/byMachineAndRoutineCategory/${idEquipment},${idRoutineCategory}`).toPromise();
+    return this.categoriesByMachineAndRoutine
   }
 
   public async GetByRoutineCategoryLevel( idRoutineCategoryLevel: number ): Promise<ResponseDTO>

@@ -64,6 +64,7 @@
     "bt-ok": "Ok",
     "error": "Error",
     "unexpected": "An unexpected error has occurred",
-    "seeRoutines":"See routines"
+    "seeRoutines":"See routines",
+    "repetitions":"Repetitions"
 
 }

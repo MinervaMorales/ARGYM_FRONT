@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { RoutineCategoryService } from 'src/services/routineCategory/routine-category.service';
 import { ImageProcessingService } from 'src/services/ImageProcessing/image-processing.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-object-detection',
@@ -51,7 +52,7 @@ export class ObjectDetectionPage implements OnInit {
 
   public async getPicture(): Promise<string>
     {
-        this.options.targetWidth = 256;
+        /*this.options.targetWidth = 256;
         this.options.targetHeight = 256;
         this.options.quality = 100;
         this.options.destinationType = this.camera.DestinationType.DATA_URL;
@@ -66,10 +67,11 @@ export class ObjectDetectionPage implements OnInit {
         let responseImagePredicted =await this.ProcessingImage(response)
         console.log(responseImagePredicted)
 
-        this.tag=await this.GetRoutinesByMachineString(responseImagePredicted)
+        this.tag=await this.GetRoutinesByMachineString(responseImagePredicted)*/
+        this.tag=await this.GetRoutinesByMachineString("2_dumbell")
         console.log(this.tag)
 
-        return responseImagePredicted;
+        return "2_dumbell";
 
         
     }
@@ -100,7 +102,21 @@ export class ObjectDetectionPage implements OnInit {
     }
 
     public async ProcessingImage(response:string){
-      return this.responseImagePredicted= await (await this.imageProcessingService.PredictImage({image:response}));
+      this.loading.create();
+      try{
+        return this.responseImagePredicted= await (await this.imageProcessingService.PredictImage({image:response}));
+      }
+      catch ( e )
+      {
+        console.log(e);
+        this.loading.dismiss();
+
+        return await (await this.alertCtrl.create({
+          header: this.translate.instant('error'),
+          message: this.translate.instant('unexpected'),
+          buttons: [{ text: this.translate.instant( "bt-ok" )}]
+        })).present();
+      }
     }
 
     public  SearchByMachineAndRoutineCategory(routine){
@@ -108,6 +124,10 @@ export class ObjectDetectionPage implements OnInit {
       console.log(routine)
       console.log(this.tag?.objModel)
       
+    }
+
+    public seeRoutines(){
+      this.route.navigate(['./routine-categories-filter'])
     }
 
     private async get(): Promise<string>
