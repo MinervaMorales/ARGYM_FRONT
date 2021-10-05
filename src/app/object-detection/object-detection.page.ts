@@ -7,6 +7,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { RoutineCategoryService } from 'src/services/routineCategory/routine-category.service';
 import { ImageProcessingService } from 'src/services/ImageProcessing/image-processing.service';
 import { ThrowStmt } from '@angular/compiler';
+import { LoaderService } from 'src/services/loader/loader.service';
+
+
+const slideOpts = {
+  initialSlide: 1,
+  speed: 400
+};
 
 @Component({
   selector: 'app-object-detection',
@@ -35,63 +42,61 @@ export class ObjectDetectionPage implements OnInit {
   public routinesByMachine: any[]
   public responseImagePredicted:any
 
-  public constructor(private camera: Camera, private platform:Platform, private androidPermissions: AndroidPermissions,protected injector: Injector) 
+  
+  
+  
+  public constructor(private camera: Camera, 
+    private platform:Platform, 
+    private androidPermissions: AndroidPermissions,
+    protected injector: Injector,
+    private ionLoader: LoaderService) 
   { 
-    /*this.platform.ready().then(() => {
-
+    this.platform.ready().then(() => {
       this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
-        result => console.log('Has permission?',result.hasPermission),
-        err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
-      );
-      
+          result => console.log('Has permission?',result.hasPermission),
+          err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
+        );
       this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA]);
-
-   })*/
-
+    })
   }
+
+  
 
   public async getPicture(): Promise<string>
     {
-        /*this.options.targetWidth = 256;
+      
+        this.options.targetWidth = 256;
         this.options.targetHeight = 256;
         this.options.quality = 100;
         this.options.destinationType = this.camera.DestinationType.DATA_URL;
         this.options.encodingType = this.camera.EncodingType.JPEG;
         this.options.mediaType = this.camera.MediaType.PICTURE;
         const response = await this.get();
-
-       
-     
-     
-
         let responseImagePredicted =await this.ProcessingImage(response)
         console.log(responseImagePredicted)
-
-        this.tag=await this.GetRoutinesByMachineString(responseImagePredicted)*/
-        this.tag=await this.GetRoutinesByMachineString("2_dumbell")
-        console.log(this.tag)
-
-        return "2_dumbell";
-
-        
+        this.tag=await this.GetRoutinesByMachineString(responseImagePredicted)
+        //this.tag=await this.GetRoutinesByMachineString("2_dumbell")
+        //console.log(this.tag)
+        return this.tag;
     }
+    
 
     public async GetRoutinesByMachineString(str:string){
       
-      this.loading.create();
+      this.showLoader()
       try
       {
         
         this.routinesByMachine = await (await this.routineCategoryService.GetByMachineWithString(str)).objModel;
         this.flag=true
+        this.hideLoader()
         return this.routinesByMachine
         
-      
       }
       catch ( e )
       {
         console.log(e);
-        this.loading.dismiss();
+        this.hideLoader()
 
         return await (await this.alertCtrl.create({
           header: this.translate.instant('error'),
@@ -138,6 +143,18 @@ export class ObjectDetectionPage implements OnInit {
         console.log("base64", base64);
 
         return base64;
+    }
+
+    showLoader() {
+      this.ionLoader.showLoader();
+  
+     /* setTimeout(() => {
+        this.hideLoader();
+      }, 1000);*/
+    }
+  
+    hideLoader() {
+      this.ionLoader.hideLoader();
     }
 
   ngOnInit() {

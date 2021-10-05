@@ -65,6 +65,15 @@
     "error": "Error",
     "unexpected": "Ha ocurrido un error inesperado",
     "seeRoutines":"Ver rutinas",
-    "repetitions":"Repeticiones"
-
+    "repetitions":"Repeticiones",
+    "welcome":"Bienvenido",
+    "descriptionIntroRecognize": "En esta sección de reconomiento de maquina podras con tu camara enfocar una maquina u objecto de hacer ejercicio para obtener toda la información necesaria para ayudarte",
+    "focus":"Enfoque",
+    "focusDescription":"Es importante enfocar lo mejor que puedas los objetos que quieres procesar, evitando los objetos demas que puedan salir en la imagen",
+    "demo":"Demostración e Información",
+    "demoDescription":"Una vez que se procese la imagen tomada, podras ver informacion acerca del objeto como tambien sugerias y demsotraciones de como ejecutar los ejercicios con la realidad aumentada!",
+    "ready":"¿Estas Preparado?",
+    "readyTo":"¿Que esperas? ¡Sube tu imagen y entrena!",
+    "levels":"Niveles de dificultad",
+    "excercises":"Ejercicios"
 }

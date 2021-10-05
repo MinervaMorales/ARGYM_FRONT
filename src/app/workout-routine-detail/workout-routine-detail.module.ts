@@ -8,6 +8,7 @@ import { WorkoutRoutineDetailPageRoutingModule } from './workout-routine-detail-
 
 import { WorkoutRoutineDetailPage } from './workout-routine-detail.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { SlideComponent } from '../components/slide/slide.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule, 
     WorkoutRoutineDetailPageRoutingModule
   ],
-  declarations: [WorkoutRoutineDetailPage]
+  declarations: [WorkoutRoutineDetailPage, SlideComponent]
 })
 export class WorkoutRoutineDetailPageModule {}

@@ -11,23 +11,21 @@
     <body style="margin: 0; overflow: hidden;">
         <a-scene
             vr-mode-ui="enabled: false;"
-            loading-screen="enabled: false;"
+            loading-screen="enabled: true;"
             renderer="logarithmicDepthBuffer: true;"
             arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
             id="scene"
             embedded
             gesture-detector
-        ><!--https://cdn.glitch.com/0cbf313d-fcae-4c85-bf6c-af26b450ab6a%2Fasset.gltf?v=1627253210888-->
-        <!--https://cdn.glitch.com/2cb8ab60-7503-4850-9778-01e9d4fb5a6c%2Fpajaro.gltf?v=1628729475466 pajaro-->
-            <a-assets timeout="10000000">
+        >
+          <!--  <a-assets timeout="10000000">
                 <a-asset-item
                     id="animated-asset"
                     src="https://cdn.glitch.com/64466ef4-fb99-4cb5-bcf7-12a96bf5e9a0%2Fasset.gltf?v=1628730887576"
                 ></a-asset-item>
-            </a-assets>
+            </a-assets>-->
 
             <a-marker
-                
                 type="pattern"
                 preset="custom"
                 url="https://cdn.glitch.com/0cbf313d-fcae-4c85-bf6c-af26b450ab6a%2Fmarker.patt?v=1627253136545"
@@ -37,6 +35,7 @@
                 id="markerA"
             >
                 <a-entity
+                    timeout="10000000"
                     id="bowser-model"
                     scale="0.050280996541719985 0.050280996541719985 0.050280996541719985"
                     animation-mixer="loop: repeat"
@@ -59,6 +58,22 @@
                 });
             }
             });
+
+            function bindEvent(element, eventName, eventHandler) {
+                if (element.addEventListener) {
+                    element.addEventListener(eventName, eventHandler, false);
+                } else if (element.attachEvent) {
+                    element.attachEvent('on' + eventName, eventHandler);
+                }
+            }
+
+            document.getElementById('bowser-model').addEventListener('loaded', function() { console.log("asset loaded") })
+
+
+            bindEvent(window, 'message', function (e) {
+                document.getElementById('bowser-model').setAttribute('gltf-model', e.data)
+            });
+
             markerA.addEventListener("markerFound", (e)=>{ window.parent.postMessage('true', '*'); })
             markerA.addEventListener("markerLost", (e)=>{ window.parent.postMessage('false', '*'); })
         </script>

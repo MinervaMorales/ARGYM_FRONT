@@ -95,6 +95,14 @@ const routes: Routes = [
   {
     path: 'routine-categories-filter',
     loadChildren: () => import('./routine-categories-filter/routine-categories-filter.module').then( m => m.RoutineCategoriesFilterPageModule)
+  },
+  {
+    path: 'excercise-list',
+    loadChildren: () => import('./components/excercise/excercise.module').then( m => m.ExcerciseModule)
+  },
+  {
+    path: 'routine-level-detail',
+    loadChildren: () => import('./components/routine-level-detail/routine-level-detail.module').then( m => m.RoutineLevelDetailModule)
   }
 
 ];

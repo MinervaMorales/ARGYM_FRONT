@@ -11,8 +11,7 @@ export class RoutineCategoryService {
   constructor(private http: HttpClient) { }
 
   categoriesByMachine:any
-
-  categoriesByMachineAndRoutine:any
+  exercise:any
 
   
   public async Get(): Promise<ResponseDTO>
@@ -44,13 +43,11 @@ export class RoutineCategoryService {
 
   public async GetByMachineAndRoutineCategory( idEquipment: number, idRoutineCategory:  number ): Promise<ResponseDTO>
   {
-    this.categoriesByMachineAndRoutine=await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/byMachineAndRoutineCategory/${idEquipment},${idRoutineCategory}`).toPromise();
-    return this.categoriesByMachineAndRoutine
+    return this.exercise=await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/byMachineAndRoutineCategory/${idEquipment},${idRoutineCategory}`).toPromise();
   }
 
   public async GetByRoutineCategoryLevel( idRoutineCategoryLevel: number ): Promise<ResponseDTO>
   {
-    console.log(idRoutineCategoryLevel);
     return await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/byRoutineCategoryLevel/${idRoutineCategoryLevel}`).toPromise();
   }
 }

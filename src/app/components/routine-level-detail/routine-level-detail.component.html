@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg_img " fullscreen>
+  <div class="silder_box">
+      <ion-slides  pager="false" [options]="slideOptions" #slideWithNav (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+          <ion-slide *ngFor="let element of exercise.photoList ">
+              <div class="slide_inner">
+                  <div class="img_box">
+                      <img [src]='element.photo'>
+                  </div>
+                  <h2 class="ion-text-center">Desmostration <span>x12</span></h2>
+              </div>
+          </ion-slide>
+          
+      </ion-slides>
+
+      <div class="slides_btn d-flex">
+          <ion-icon class="zmdi zmdi-chevron-left ion-text-center" (click)="slidePrev(sliderOne,slideWithNav)" [class.disabled]="sliderOne.isBeginningSlide"></ion-icon>
+
+          <ion-icon class="zmdi zmdi-chevron-right ion-text-center end" (click)="slideNext(sliderOne,slideWithNav)" [class.disabled]="sliderOne.isEndSlide"></ion-icon>
+      </div>
+  </div>
+
+  <div class="text-container animate__animated animate__fadeInUp">
+      <!--        <h2>24 March 18</h2>-->
+      <p>{{exercise.description}}</p>
+  </div>
+</ion-content>
+
+
+<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
+  <ion-button size="large" expand="full" class="btn" (click)="start_workout()">{{'let_starts' | translate}}</ion-button>
+</ion-footer>

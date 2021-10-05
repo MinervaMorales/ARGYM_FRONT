@@ -11,6 +11,8 @@ export class RoutineCategoryLevelExerciseDTO{
     public model3D: string;
     public marker: string;
     public exercise: string;
+    public exerciseDescription: string;
+    public audio: string;
     
     public constructor(data?:any){
         if(data){
@@ -26,6 +28,8 @@ export class RoutineCategoryLevelExerciseDTO{
             this.model3D = data.model3D;
             this.marker = data.marker;
             this.exercise = data.exercise;
+            this.exerciseDescription = data.exerciseDescription;
+            this.audio = data.audio;
         }
     }
 }

@@ -8,9 +8,6 @@ import { RoutineCategoriesFilterPageRoutingModule } from './routine-categories-f
 
 import { RoutineCategoriesFilterPage } from './routine-categories-filter.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { AccordianComponent } from '../accordian/accordian.component';
-import { AccordianLevelsComponent } from '../components/accordian-levels/accordian-levels.component';
-
 
 @NgModule({
   imports: [
@@ -20,6 +17,6 @@ import { AccordianLevelsComponent } from '../components/accordian-levels/accordi
     RoutineCategoriesFilterPageRoutingModule,
     TranslateModule
   ],
-  declarations: [RoutineCategoriesFilterPage,AccordianComponent,AccordianLevelsComponent]
+  declarations: [RoutineCategoriesFilterPage]
 })
 export class RoutineCategoriesFilterPageModule {}
