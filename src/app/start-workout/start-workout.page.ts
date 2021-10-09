@@ -26,9 +26,9 @@ export class StartWorkoutPage implements OnInit {
   public  src: string = "../assets/arscenes/arscene.html";
 
   //Variable that has the current selected exercise
+
   //public exercise: RoutineCategoryLevelExerciseDTO;
   public exercise: any;
-  
 
   public constructor(private router: Router, private route: ActivatedRoute, public domSanitizer: DomSanitizer) { 
     this.route.queryParams.subscribe(params =>{
@@ -40,18 +40,14 @@ export class StartWorkoutPage implements OnInit {
   }
 
   public ngOnInit(){
-    console.log("ex")
-    console.log(this.exercise)
     this.modelStatusListener();
     this.iframeSrc = this.domSanitizer.bypassSecurityTrustResourceUrl(this.src);
   }
 
   public ngAfterViewInit(){
     setTimeout(()=>{
-      console.log("here :")
-      console.log(this.exercise.model3D)
-      this.iframeScene.nativeElement.contentWindow.postMessage(this.exercise?.model3D, '*');
-    }, 15000);
+      this.iframeScene.nativeElement.contentWindow.postMessage(this.exercise.model3D, '*');
+    }, 8000);
   }
 
   public rest() {
