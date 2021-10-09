@@ -87,9 +87,22 @@ const routes: Routes = [
   {
     path: 'routine-category-level-workouts',
     loadChildren: () => import('./routine-category-level-workouts/routine-category-level-workouts.module').then( m => m.RoutineCategoryLevelWorkoutsPageModule)
-  },  {
+  },
+  {
     path: 'workout-routine-detail',
     loadChildren: () => import('./workout-routine-detail/workout-routine-detail.module').then( m => m.WorkoutRoutineDetailPageModule)
+  },
+  {
+    path: 'routine-categories-filter',
+    loadChildren: () => import('./routine-categories-filter/routine-categories-filter.module').then( m => m.RoutineCategoriesFilterPageModule)
+  },
+  {
+    path: 'excercise-list',
+    loadChildren: () => import('./components/excercise/excercise.module').then( m => m.ExcerciseModule)
+  },
+  {
+    path: 'routine-level-detail',
+    loadChildren: () => import('./components/routine-level-detail/routine-level-detail.module').then( m => m.RoutineLevelDetailModule)
   }
 
 ];

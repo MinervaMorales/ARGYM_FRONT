@@ -63,6 +63,17 @@
     "try-again": "Invalid email or password. Please check your information and try again",
     "bt-ok": "Ok",
     "error": "Error",
-    "unexpected": "An unexpected error has occurred"
-
+    "unexpected": "An unexpected error has occurred",
+    "seeRoutines":"See routines",
+    "repetitions":"Repetitions",
+    "welcome":"Welcome",
+    "descriptionIntroRecognize": "In this machine recognition section you can use your camera to focus on a machine or exercise object to obtain all the necessary information to help you.",
+    "focus":"Focus",
+    "focusDescription":"It is important to focus as best you can the objects you want to process, avoiding other objects that may appear in the image",
+    "demo":"Demo and Information",
+    "demoDescription":"Once the image taken is processed, you will be able to see information about the object as well as suggestions and other demonstrations on how to perform the exercises with augmented reality!",
+    "ready":"Are you ready?",
+    "readyTo":"What are you waiting for? Upload your image and train!",
+    "levels":"Difficulty levels",
+    "excercises":"Exercises"
 }

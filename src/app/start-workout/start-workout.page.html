@@ -19,4 +19,5 @@
 <ion-content fullscreen>
     <iframe #iframeScene frameborder="0" [src]="iframeSrc" style="position:absolute; width: 100%; height: 100%;"></iframe>
 </ion-content>
-<app-audio-player #audioPlayer [audio]="exercise.audio"></app-audio-player>
+<app-audio-player #audioPlayer [audio]="exercise?.audio"></app-audio-player>
+

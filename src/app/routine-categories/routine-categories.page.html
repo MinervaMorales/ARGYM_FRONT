@@ -15,7 +15,7 @@
 <ion-content class="bg_img" fullscreen>
   <ion-list *ngFor="let routine of routineCategoryList" lines="none">
       <h2><span>{{'workout' | translate | uppercase}}</span> {{ routine?.routineCategory?.name | uppercase}}</h2>
-      <ion-item *ngFor="let level of routine?.routineCategoryLevels" class="animate__animated animate__fadeInUp" (click)="workouts(routine.routineCategory, level)">
+      <ion-item *ngFor="let level of routine?.routineCategoryLevels" class="animate__animated animate__fadeInUp" >
           <div class="item_inner d-flex">
               <div class="img_box center_img">
                   <img src="{{level?.photo}}" class="crop_img">

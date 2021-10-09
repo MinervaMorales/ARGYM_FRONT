@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AudioPlayerComponent } from '../components/audio-player/audio-player.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RoutineCategoryLevelExerciseDTO } from 'src/services/dtos/RoutineCategoryLevelExerciseDTO';
+import { ExcerciseComponent } from '../components/excercise/excercise.component';
 
 @Component({
   selector: 'app-start-workout',
@@ -25,8 +26,9 @@ export class StartWorkoutPage implements OnInit {
   public  src: string = "../assets/arscenes/arscene.html";
 
   //Variable that has the current selected exercise
-  public exercise: RoutineCategoryLevelExerciseDTO;
-  
+
+  //public exercise: RoutineCategoryLevelExerciseDTO;
+  public exercise: any;
 
   public constructor(private router: Router, private route: ActivatedRoute, public domSanitizer: DomSanitizer) { 
     this.route.queryParams.subscribe(params =>{

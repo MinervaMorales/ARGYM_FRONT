@@ -1,7 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Component, Injector, OnInit } from '@angular/core';
+import { AlertController, LoadingController, Platform } from '@ionic/angular';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Camera, CameraOptions} from '@ionic-native/camera/ngx';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { RoutineCategoryService } from 'src/services/routineCategory/routine-category.service';
+import { ImageProcessingService } from 'src/services/ImageProcessing/image-processing.service';
+import { ThrowStmt } from '@angular/compiler';
+import { LoaderService } from 'src/services/loader/loader.service';
+
+
+const slideOpts = {
+  initialSlide: 1,
+  speed: 400
+};
 
 @Component({
   selector: 'app-object-detection',
@@ -21,60 +33,106 @@ export class ObjectDetectionPage implements OnInit {
   tag:any
   flag:boolean
 
-  public constructor(private camera: Camera, private platform:Platform, private androidPermissions: AndroidPermissions) 
+  private route: Router = this.injector.get(Router);
+  private alertCtrl: AlertController = this.injector.get(AlertController);
+  public loading: LoadingController = this.injector.get( LoadingController );
+  public translate: TranslateService = this.injector.get( TranslateService );
+  public routineCategoryService: RoutineCategoryService=this.injector.get(RoutineCategoryService);
+  public imageProcessingService: ImageProcessingService=this.injector.get(ImageProcessingService)
+  public routinesByMachine: any[]
+  public responseImagePredicted:any
+
+  
+  
+  
+  public constructor(private camera: Camera, 
+    private platform:Platform, 
+    private androidPermissions: AndroidPermissions,
+    protected injector: Injector,
+    private ionLoader: LoaderService) 
   { 
-    /*this.platform.ready().then(() => {
-
+    this.platform.ready().then(() => {
       this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
-        result => console.log('Has permission?',result.hasPermission),
-        err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
-      );
-      
+          result => console.log('Has permission?',result.hasPermission),
+          err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
+        );
       this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA]);
-
-   })*/
-
+    })
   }
+
+  
 
   public async getPicture(): Promise<string>
     {
+      
         this.options.targetWidth = 256;
         this.options.targetHeight = 256;
         this.options.quality = 100;
         this.options.destinationType = this.camera.DestinationType.DATA_URL;
         this.options.encodingType = this.camera.EncodingType.JPEG;
         this.options.mediaType = this.camera.MediaType.PICTURE;
-
         const response = await this.get();
+        let responseImagePredicted =await this.ProcessingImage(response)
+        console.log(responseImagePredicted)
+        this.tag=await this.GetRoutinesByMachineString(responseImagePredicted)
+        //this.tag=await this.GetRoutinesByMachineString("2_dumbell")
+        //console.log(this.tag)
+        return this.tag;
+    }
+    
 
-        const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ "image": response})
-      };
-     
-      await fetch('http://192.168.0.109:5000/image', requestOptions)
-          .then(prediction => prediction.json() )
-          .then(data=>{
-            this.tag=data
-            console.log(data)
-            return fetch('https://192.168.0.109:5001/RoutineCategory/byMachineWithString?id='+data)
-            .then(prediction_result=>prediction_result.json())
-            .then(data_result=>{
-              console.log(data_result)
-              this.flag=true
-              this.tag=data_result
-            })
-            ;
-          })
-
-        return response;
+    public async GetRoutinesByMachineString(str:string){
+      
+      this.showLoader()
+      try
+      {
         
+        this.routinesByMachine = await (await this.routineCategoryService.GetByMachineWithString(str)).objModel;
+        this.flag=true
+        this.hideLoader()
+        return this.routinesByMachine
+        
+      }
+      catch ( e )
+      {
+        console.log(e);
+        this.hideLoader()
+
+        return await (await this.alertCtrl.create({
+          header: this.translate.instant('error'),
+          message: this.translate.instant('unexpected'),
+          buttons: [{ text: this.translate.instant( "bt-ok" )}]
+        })).present();
+      }
     }
 
-    public  SearchByMachineAndRoutineCategory(equipmentId,routineId){
-      alert(equipmentId)
-      alert(routineId)
+    public async ProcessingImage(response:string){
+      this.loading.create();
+      try{
+        return this.responseImagePredicted= await (await this.imageProcessingService.PredictImage({image:response}));
+      }
+      catch ( e )
+      {
+        console.log(e);
+        this.loading.dismiss();
+
+        return await (await this.alertCtrl.create({
+          header: this.translate.instant('error'),
+          message: this.translate.instant('unexpected'),
+          buttons: [{ text: this.translate.instant( "bt-ok" )}]
+        })).present();
+      }
+    }
+
+    public  SearchByMachineAndRoutineCategory(routine){
+      
+      console.log(routine)
+      console.log(this.tag?.objModel)
+      
+    }
+
+    public seeRoutines(){
+      this.route.navigate(['./routine-categories-filter'])
     }
 
     private async get(): Promise<string>
@@ -85,6 +143,18 @@ export class ObjectDetectionPage implements OnInit {
         console.log("base64", base64);
 
         return base64;
+    }
+
+    showLoader() {
+      this.ionLoader.showLoader();
+  
+     /* setTimeout(() => {
+        this.hideLoader();
+      }, 1000);*/
+    }
+  
+    hideLoader() {
+      this.ionLoader.hideLoader();
     }
 
   ngOnInit() {

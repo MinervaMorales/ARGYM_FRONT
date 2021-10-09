@@ -18,6 +18,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { UserService } from 'src/services/user/user.service';
 import { Storage } from '@ionic/storage';
 
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -30,7 +31,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 	  IonicModule.forRoot(),
       AppRoutingModule,
       HttpClientModule,
-      TranslateModule,    
+      TranslateModule,
+         
       TranslateModule.forRoot({
         loader: {
         provide: TranslateLoader,
