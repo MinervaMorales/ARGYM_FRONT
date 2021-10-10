@@ -18,13 +18,6 @@
             embedded
             gesture-detector
         >
-          <!--  <a-assets timeout="10000000">
-                <a-asset-item
-                    id="animated-asset"
-                    src="https://cdn.glitch.com/64466ef4-fb99-4cb5-bcf7-12a96bf5e9a0%2Fasset.gltf?v=1628730887576"
-                ></a-asset-item>
-            </a-assets>-->
-
             <a-marker
                 type="pattern"
                 preset="custom"
@@ -37,7 +30,7 @@
                 <a-entity
                     timeout="10000000"
                     id="bowser-model"
-                    scale="0.050280996541719985 0.050280996541719985 0.050280996541719985"
+                    scale="0.040280996541719985 0.040280996541719985 0.040280996541719985"
                     animation-mixer="loop: repeat"
                     gltf-model="#animated-asset"
                     play-on-scan
@@ -50,16 +43,11 @@
         </a-scene>
         <script>
             
-            AFRAME.registerComponent('play-on-scan', {
-            init: function () {
-                markerA.addEventListener("markerFound", function () {
-                    console.log("on found!!!")
-                    markerA.setAttribute('animation-mixer', {clip: '*', loop: 'once'});
-                });
-            }
-            });
+            var assetLoaded = false;
+            var markerFound = false;
 
-            function bindEvent(element, eventName, eventHandler) {
+            function bindEvent(element, eventName, eventHandler) 
+            {
                 if (element.addEventListener) {
                     element.addEventListener(eventName, eventHandler, false);
                 } else if (element.attachEvent) {
@@ -67,15 +55,28 @@
                 }
             }
 
-            document.getElementById('bowser-model').addEventListener('loaded', function() { console.log("asset loaded") })
+            document.getElementById('bowser-model').addEventListener('model-loaded', 
+                function() { 
+                    window.parent.postMessage(markerFound == true ? 'true': 'false', '*'); 
+                    assetLoaded = true;
+                })
 
 
             bindEvent(window, 'message', function (e) {
                 document.getElementById('bowser-model').setAttribute('gltf-model', e.data)
             });
 
-            markerA.addEventListener("markerFound", (e)=>{ window.parent.postMessage('true', '*'); })
-            markerA.addEventListener("markerLost", (e)=>{ window.parent.postMessage('false', '*'); })
+            markerA.addEventListener("markerFound", (e)=>{ 
+                window.parent.postMessage(assetLoaded == true ? 'true': 'loadingModel', '*');
+                window.parent.postMessage('markerFound', '*')
+                markerFound = true;
+               
+            })
+            markerA.addEventListener("markerLost", (e)=>{ 
+                window.parent.postMessage('false', '*'); 
+                markerFound = false;
+            })
+
         </script>
     </body>
 </html>
