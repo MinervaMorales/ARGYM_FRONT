@@ -65,12 +65,13 @@ export class SignInPage implements OnInit {
   public async login()
   {
     this.user = new Users(this.loginForm.value);
-    this.loading.create();
+    (await this.loading.create()).present();
     try
     {
       let response = await (await this.userService.Login( this.user )).objModel.access_Token;
       this.storage.set( 'TOKEN', response );
       this.saveUser(response);
+      this.loading.dismiss();
       this.home();
     }
     catch ( e )
