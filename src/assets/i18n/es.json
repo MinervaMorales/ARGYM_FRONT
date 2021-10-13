@@ -23,7 +23,7 @@
     "blogs": "blogs",
     "privacy_policy": "Política de privacidad",
     "alarms": "alarmas",
-    "detect-object": "Detectar Equipo",
+    "detect-object": "Reconocer Equipo",
     "workouts": "entrenamientos",
     "workout": "Rutina de ejercicio",
     "lavel": "Nivel",
@@ -75,5 +75,9 @@
     "ready":"¿Estas Preparado?",
     "readyTo":"¿Que esperas? ¡Sube tu imagen y entrena!",
     "levels":"Niveles de dificultad",
-    "excercises":"Ejercicios"
+    "excercises":"Ejercicios",
+    "changes-saved": "Datos Actualizados",
+    "updated-successfully": "Los campos fueron actualizados correctamente",
+    "welcome-new-user": "Bienvenido nuevo Usuario",
+    "new-user-added": "Usuario registrado correctamente."
 }

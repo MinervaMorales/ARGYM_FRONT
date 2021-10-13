@@ -14,61 +14,27 @@
     <div class="form">
         <div class="profile_img animate__animated animate__zoomIn">
             <div class="img_box center_img">
-                <img src="{{user.Photo}}" class="crop_img">
+                <img (click)="getPicture()" src="{{user.photo}}" onerror="this.src='assets/imgs/avatar.png'" class="crop_img">
             </div>
             <ion-icon class="zmdi zmdi-camera"></ion-icon>
         </div>
         <ion-list lines="none">
-            <ion-item lines="none" class="animate__animated animate__fadeInUp">
-                <div class="item_inner d-flex">
-                    <ion-label position="stacked">{{'user_neme' | translate}}</ion-label>
-                    <ion-input mode="md" class="end ion-text-end" type="name" value="{{user.Name}}"></ion-input>
-                </div>
-            </ion-item>
-            <ion-item lines="none" class="animate__animated animate__fadeInUp">
-                <div class="item_inner d-flex">
-                    <ion-label position="stacked">{{'email_address' | translate}}</ion-label>
-                    <ion-input mode="md" class="end ion-text-end" type="name" value="{{user.Email}}"></ion-input>
-                </div>
-            </ion-item>
-        <!--
-            <ion-item lines="none" class="animate__animated animate__fadeInUp">
-                <div class="item_inner d-flex">
-                    <ion-label position="stacked">{{'gender' | translate}}</ion-label>
-                    <ion-select mode="ios" [(ngModel)]="gender" interface="popover" class="end ion-text-end">
-                        <ion-select-option value="f">Female</ion-select-option>
-                        <ion-select-option value="m">Male</ion-select-option>
-                    </ion-select>
-                    <ion-icon class="zmdi zmdi-caret-down ion-text-end"></ion-icon>
-                </div>
-            </ion-item>
-            <ion-item lines="none" class="animate__animated animate__fadeInUp">
-                <div class="item_inner d-flex">
-                    <ion-label position="stacked">{{'birthdate' | translate}}</ion-label>
-                    <ion-datetime mode="ios" class="end ion-text-end" displayFormat="DD MMMM YYYY" value="19-December-1990"></ion-datetime>
-                </div>
-            </ion-item>
-
-            <ion-item lines="none" class="animate__animated animate__fadeInUp">
-                <div class="item_inner d-flex">
-                    <ion-label position="stacked">{{'country' | translate}}</ion-label>
-                    <ion-select class="end ion-text-end" [(ngModel)]="country" okText="{{'ok' | translate}}" cancelText="{{'cancel' | translate}}">
-                        <ion-select-option value="1">Armenia</ion-select-option>
-                        <ion-select-option value="2">Australia</ion-select-option>
-                        <ion-select-option value="3">Bhutan</ion-select-option>
-                        <ion-select-option value="4">Brazil</ion-select-option>
-                        <ion-select-option value="5">Cambodia</ion-select-option>
-                        <ion-select-option value="6">Cameroon</ion-select-option>
-                        <ion-select-option value="7">Denmark</ion-select-option>
-                        <ion-select-option value="8">Eritrea</ion-select-option>
-                        <ion-select-option value="9">Ghana</ion-select-option>
-                        <ion-select-option value="10">USA</ion-select-option>
-                    </ion-select>
-                    <ion-icon class="zmdi zmdi-caret-down ion-text-end"></ion-icon>
-                </div>
-            </ion-item>-->
+            <form [formGroup]="userForm" (ngSubmit)="update()">
+                <ion-item lines="none" class="animate__animated animate__fadeInUp">
+                    <div class="item_inner d-flex">
+                        <ion-label position="stacked">{{'user_neme' | translate}}</ion-label>
+                        <ion-input mode="md" class="end ion-text-end" formControlName="name" type="name"></ion-input>
+                    </div>
+                </ion-item>
+                <ion-item lines="none" class="animate__animated animate__fadeInUp">
+                    <div class="item_inner d-flex">
+                        <ion-label position="stacked">{{'email_address' | translate}}</ion-label>
+                        <ion-input mode="md" class="end ion-text-end" formControlName="email" type="email"></ion-input>
+                    </div>
+                </ion-item>
+            </form>
         </ion-list>
 
-        <ion-button size="large" expand="block"  class="btn animate__animated animate__fadeInUp">{{'update_profile' | translate}}</ion-button>
+        <ion-button (click)="update()" size="large" expand="block"  class="btn animate__animated animate__fadeInUp">{{'update_profile' | translate}}</ion-button>
     </div>
 </ion-content>

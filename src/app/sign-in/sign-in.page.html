@@ -6,19 +6,19 @@
 
 <ion-content class="bg_img bg_blur" fullscreen>
     <div class="logo animate__animated animate__zoomIn">
-        <img src="assets/imgs/logo2.png">
+        <img src="assets/imgs/Gymmy-03.png">
     </div>
     <div class="form animate__animated animate__zoomIn" >
         <h2 class="ion-text-center">{{"sign_in_now" | translate}}</h2>
         <ion-list lines="none">
             <form [formGroup]="loginForm" (ngSubmit)="login()">
             <ion-item lines="none">
-                <ion-input mode="md" formControlName="Email" type="email" placeholder="{{'email_address' | translate}}"></ion-input>
+                <ion-input mode="md" formControlName="email" type="email" placeholder="{{'email_address' | translate}}"></ion-input>
             </ion-item>
 
             <ion-item lines="none">
                 <div class="d-flex">
-                    <ion-input mode="md" formControlName="Password" type="password" placeholder="{{'password' | translate}}"></ion-input>
+                    <ion-input mode="md" formControlName="password" type="password" placeholder="{{'password' | translate}}"></ion-input>
 
                     <h3 (click)="forgot_password()">{{'forgot' | translate}}?</h3>
                 </div>

@@ -46,7 +46,6 @@ export class AudioPlayerComponent implements OnInit {
    */
   public togglePlayer(pause)
   {
-    console.log("in toggle player", pause);
     if(!this.player)
     {
       this.start();

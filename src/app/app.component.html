@@ -6,10 +6,10 @@
                     <div class="profile_box" (click)="profile()">
                         <ion-menu-toggle class="d-flex" auto-hide="false">
                             <div class="img_box center_img">
-                                <img src="{{user.Photo}}" class="crop_img">
+                                <img src="{{user.photo}}" onerror="this.src='assets/imgs/avatar.png'" class="crop_img">
                             </div>
                             <div class="text_box">
-                                <h2>{{user.Name}}</h2>
+                                <h2>{{user.name}}</h2>
                                 <h3>{{"view_profile" | translate}}</h3>
                             </div>
                         </ion-menu-toggle>

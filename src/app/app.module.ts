@@ -17,7 +17,9 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { UserService } from 'src/services/user/user.service';
 import { Storage } from '@ionic/storage';
-
+import { File } from '@ionic-native/file/ngx';
+import { Picture } from 'src/common/utilities/picture';
+import { FilePath } from '@ionic-native/file-path/ngx';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,6 +49,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     StatusBar,
     Storage,
     SplashScreen,
+    File, 
+    FilePath,
+    Picture,
     { provide: APP_CONFIG, useValue: BaseAppConfig },      
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

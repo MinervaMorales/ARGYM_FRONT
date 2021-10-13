@@ -9,28 +9,30 @@
 
 <ion-content class="bg_img bg_blur" fullscreen>
     <div class="logo animate__animated animate__zoomIn">
-        <img src="assets/imgs/logo.png">
+        <img src="assets/imgs/Gymmy-03.png">
     </div>
     <div class="form animate__animated animate__zoomIn">
         <h2 class="ion-text-center">{{"create_new_account" | translate}}</h2>
         <ion-list lines="none">
+            <form [formGroup]="signUpForm" (ngSubmit)="Insert()">
+                <ion-item lines="none">
+                    <ion-input mode="md" formControlName="name"  type="name" placeholder="{{'full_name' | translate}}"></ion-input>
+                </ion-item>
 
-            <ion-item lines="none">
-                <ion-input mode="md" type="name" placeholder="{{'full_name' | translate}}"></ion-input>
-            </ion-item>
+                <ion-item lines="none">
+                    <ion-input mode="md" formControlName="email" type="email" placeholder="{{'email_address' | translate}}"></ion-input>
+                </ion-item>
 
-            <ion-item lines="none">
-                <ion-input mode="md" type="email" placeholder="{{'email_address' | translate}}"></ion-input>
-            </ion-item>
-
-            <ion-item lines="none">
-                <ion-input mode="md" type="password" placeholder="{{'password' | translate}}"></ion-input>
-            </ion-item>
+                <ion-item lines="none">
+                    <ion-input mode="md" formControlName="password" type="password" placeholder="{{'password' | translate}}"></ion-input>
+                </ion-item>
+            </form>
         </ion-list>
+          
+        <ion-button size="large" expand="block" class="btn" [disabled]="signUpForm.invalid"  (click)="Insert()">{{'create_account' | translate}}</ion-button>
 
-        <ion-button size="large" expand="block" class="btn" (click)="home()">{{'create_account' | translate}}</ion-button>
 
-        <div class="social_login">
+        <!--<div class="social_login">
             <ion-row>
                 <ion-col size="6">
                     <ion-button size="large" expand="block" fill="outline" class="btn" (click)="home()">
@@ -45,7 +47,7 @@
                     </ion-button>
                 </ion-col>
             </ion-row>
-        </div>
+        </div>-->
 
         <div class="tearm_conditionos">
             <h3 class="ion-text-center"> {{'by_signing_up_i_agree_with_the' | translate}}
