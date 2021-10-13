@@ -41,8 +41,8 @@ export class SignInPage implements OnInit {
   public buildForm() 
   {
     this.loginForm = this.formBuilder.group({
-      Email: new FormControl('', Validators.compose([Validators.maxLength(128), Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'), Validators.required])),
-      Password: new FormControl('', Validators.compose([Validators.maxLength(8), Validators.required]))
+      email: new FormControl('', Validators.compose([Validators.maxLength(128), Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'), Validators.required])),
+      password: new FormControl('', Validators.compose([Validators.maxLength(8), Validators.required]))
     });
   }
 
@@ -93,10 +93,10 @@ export class SignInPage implements OnInit {
     let decoded: any = jwt_decode(token);
     let userData: string = decoded.unique_name.split(";");
 
-    user.Id = Number(userData[0]);
-    user.Name = userData[1];
-    user.Email = userData[2];
-    user.Photo = userData[3];
+    user.id = Number(userData[0]);
+    user.name = userData[1];
+    user.email = userData[2];
+    user.photo = userData[3];
     this.storage.set( 'USER', user );
 
     this.event.setUserData(user);

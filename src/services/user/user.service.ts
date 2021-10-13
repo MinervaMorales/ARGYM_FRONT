@@ -19,13 +19,13 @@ export class UserService {
 
   public async Insert( user: Users ): Promise<ResponseDTO>
   {
-    return await this.http.post<ResponseDTO>( `${environment.apiURL}​/Users`, user ).toPromise();
+    return await this.http.post<ResponseDTO>( `${environment.apiURL}/Users`, user ).toPromise();
   }
 
   
   public async Update( user: Users ): Promise<ResponseDTO>
   {
-    return await this.http.put<ResponseDTO>( `${environment.apiURL}​/Users`, user ).toPromise();
+    return await this.http.put<ResponseDTO>( `${environment.apiURL}/Users`, user ).toPromise();
   }
 
 }

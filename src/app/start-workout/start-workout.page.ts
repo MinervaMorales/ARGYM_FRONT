@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AudioPlayerComponent } from '../components/audio-player/audio-player.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LoadingController, Platform } from '@ionic/angular';
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 @Component({
   selector: 'app-start-workout',
@@ -33,25 +32,15 @@ export class StartWorkoutPage implements OnInit {
   public displayAudio: boolean = false;
   
   private router: Router = this.injector.get(Router);  
-  private platform: Platform = this.injector.get(Platform);
   private route: ActivatedRoute = this.injector.get(ActivatedRoute);
   public domSanitizer: DomSanitizer = this.injector.get(DomSanitizer);
   private loading: LoadingController = this.injector.get(LoadingController);
-  private androidPermissions: AndroidPermissions = this.injector.get(AndroidPermissions);
 
   public constructor(protected injector: Injector) {
     this.route.queryParams.subscribe(params => {
       if (params) {
         this.exercise = JSON.parse(params['exercise']);
       }
-    })
-
-    this.platform.ready().then(() => {
-      this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
-        result => console.log('Has permission?', result.hasPermission),
-        err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
-      );
-      this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA]);
     })
   }
 

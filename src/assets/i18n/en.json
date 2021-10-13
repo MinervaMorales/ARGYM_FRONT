@@ -15,7 +15,7 @@
     "forgot_password": "Forgot Password",
     "back_to": "Back to",
     "login": "Login",
-    "detect-object": "Detect Equipment",
+    "detect-object": "Recognize Equipment",
     "provide_your": "Provide your",
     "registered_email_address": "registered email address &",
     "we_ll_send_you_password_reset_instruction": "we'll send you password reset instruction",
@@ -75,5 +75,9 @@
     "ready":"Are you ready?",
     "readyTo":"What are you waiting for? Upload your image and train!",
     "levels":"Difficulty levels",
-    "excercises":"Exercises"
+    "excercises":"Exercises",
+    "changes-saved": "Updated Data",
+    "updated-successfully": "The changes where successfully added",
+    "welcome-new-user": "Welcome new User",
+    "new-user-added": "User registered successfully"
 }

@@ -7,6 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { RoutineCategoryService } from 'src/services/routineCategory/routine-category.service';
 import { ImageProcessingService } from 'src/services/ImageProcessing/image-processing.service';
 import { LoaderService } from 'src/services/loader/loader.service';
+import { ObjectDetectionImage } from 'src/common/const/value';
+import { Picture } from 'src/common/utilities/picture';
 
 
 const slideOpts = {
@@ -36,27 +38,10 @@ export class ObjectDetectionPage implements OnInit {
   public translate: TranslateService = this.injector.get(TranslateService);
   public routineCategoryService: RoutineCategoryService = this.injector.get(RoutineCategoryService);
   public imageProcessingService: ImageProcessingService = this.injector.get(ImageProcessingService);
-  public camera: Camera = this.injector.get(Camera);
-  private androidPermissions: AndroidPermissions = this.injector.get(AndroidPermissions);
-  private platform: Platform = this.injector.get(Platform);
   private ionLoader: LoaderService = this.injector.get(LoaderService);
-
-  private readonly options: CameraOptions =
-    {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
-    };
-
+  private picture: Picture = this.injector.get(Picture);
+ 
   public constructor(protected injector: Injector) {
-    this.platform.ready().then(() => {
-      this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
-        result => console.log('Has permission?', result.hasPermission),
-        err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
-      );
-      this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA]);
-    })
   }
 
   ngOnInit() {
@@ -64,23 +49,10 @@ export class ObjectDetectionPage implements OnInit {
 
   public async getPicture(): Promise<string> {
 
-    this.options.targetWidth = 256;
-    this.options.targetHeight = 256;
-    this.options.quality = 100;
-    this.options.destinationType = this.camera.DestinationType.DATA_URL;
-    this.options.encodingType = this.camera.EncodingType.JPEG;
-    this.options.mediaType = this.camera.MediaType.PICTURE;
-    const response = await this.get();
-    let responseImagePredicted = await this.ProcessingImage(response)
+    const response = await this.picture.getObjectDetectionImage();
+    let responseImagePredicted = await this.ProcessingImage(response.Base64);
     this.tag = await this.GetRoutinesByMachineString(responseImagePredicted)
     return this.tag;
-  }
-
-  private async get(): Promise<string> {
-    let base64: string;
-
-    base64 = await this.camera.getPicture(this.options);
-    return base64;
   }
 
 
