@@ -59,7 +59,15 @@ export class Picture
         this.options.encodingType = this.camera.EncodingType.JPEG;
         this.options.mediaType = this.camera.MediaType.PICTURE;
 
-        return this.get();
+        return this.takePicture();
+    }
+
+    public async takePicture(): Promise<Photo>
+    {
+        let result: Photo = new Photo();
+        result.Base64 = await this.camera.getPicture( this.options );
+
+        return result; 
     }
 
     private async get(): Promise<Photo>
@@ -85,6 +93,7 @@ export class Picture
 
         return result;
     }
+
 
     private appendDate( name: string ): string
     {
