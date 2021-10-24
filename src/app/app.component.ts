@@ -127,6 +127,7 @@ export class AppComponent implements OnInit {
   public async ngOnInit() 
   {
     await this.storage.create();
+    this.getUser();
   }
 
   public profile() 
@@ -145,7 +146,7 @@ export class AppComponent implements OnInit {
 
   public async getUser()
   {
-    this.user = new Users(await this.storage.get( 'USER' ))
+    this.user = new Users(await this.storage.get( 'USER' ));
   }
 
   public async presentModal () 

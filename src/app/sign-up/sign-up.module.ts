@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { IonicModule } from '@ionic/angular';
@@ -14,7 +14,9 @@ import { SignUpPage } from './sign-up.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TranslateModule,    
+    ReactiveFormsModule,
+    IonicModule,
+    TranslateModule,  
     SignUpPageRoutingModule
   ],
   declarations: [SignUpPage]

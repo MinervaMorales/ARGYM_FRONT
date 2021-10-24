@@ -17,6 +17,6 @@ import { ObjectDetectionPage } from './object-detection.page';
     TranslateModule,
     ObjectDetectionPageRoutingModule
   ],
-  declarations: [ObjectDetectionPage]
+  declarations: [ObjectDetectionPage],
 })
 export class ObjectDetectionPageModule {}

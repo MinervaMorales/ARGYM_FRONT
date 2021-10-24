@@ -38,7 +38,6 @@ export class AudioPlayerComponent implements OnInit {
 
       }
     })
-    this.player.play();
   }
 
   /**
