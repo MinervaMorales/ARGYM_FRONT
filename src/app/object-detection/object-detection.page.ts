@@ -50,6 +50,7 @@ export class ObjectDetectionPage implements OnInit {
   public async getPicture(): Promise<string> {
 
     const response = await this.picture.getObjectDetectionImage();
+    console.log(response.Base64)
     let responseImagePredicted = await this.ProcessingImage(response.Base64);
     this.tag = await this.GetRoutinesByMachineString(responseImagePredicted)
     return this.tag;

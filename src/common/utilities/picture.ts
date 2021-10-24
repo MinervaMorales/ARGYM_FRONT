@@ -16,7 +16,6 @@ export class Picture
     private readonly android: boolean = this.platform.is( 'android' );
     private readonly options: CameraOptions =
     {
-        sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
         destinationType: this.camera.DestinationType.FILE_URI
     };
 
@@ -36,12 +35,20 @@ export class Picture
      */
     public async getProfilePicture(): Promise<string>
     {
+        console.log("getProfilePicture")
         this.options.targetWidth = Profile.WIDTH;
+        console.log("targetWidth")
         this.options.targetHeight = Profile.HEIGHT;
+        console.log("targetHeight")
         this.options.quality = Profile.QUALITY;
-        this.options.mediaType = this.camera.PictureSourceType.PHOTOLIBRARY;
+        console.log("quality")
+        this.options.sourceType = this.camera.PictureSourceType.PHOTOLIBRARY;
+        console.log("sourceType")
+        this.options.mediaType = this.camera.MediaType.PICTURE;
+        console.log("mediaType")
         const response = await this.get();
-
+        console.log("response")
+        console.log(response)
         return response.Base64;
     }
 
@@ -51,6 +58,7 @@ export class Picture
      */
     public async getObjectDetectionImage(): Promise<Photo>
     {
+        this.options.sourceType = this.camera.PictureSourceType.CAMERA;
         this.options.targetWidth = ObjectDetectionImage.WIDTH;
         this.options.targetHeight = ObjectDetectionImage.HEIGHT;
         this.options.quality = ObjectDetectionImage.QUALITY;
