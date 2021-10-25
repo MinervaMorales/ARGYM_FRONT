@@ -24,15 +24,20 @@ export class ExcerciseComponent implements OnInit {
     this.excerciseDetail=this.routineCategoryService.exercise.objModel
   }
 
-  public async showAr(element,idExercise){
-    console.log(idExercise)
-    var photoList= (await this.exercisePhotoService.GetByIdExercise(idExercise)).objModel
+  counter(i: number) {
+    return new Array(i);
+}
+
+  public async showAr(levelExercise,exercise){
+    console.log(exercise.id)
+    var photoList= (await this.exercisePhotoService.GetByIdExercise(exercise.idExcercise)).objModel
   
-    element.photoList=photoList
+    levelExercise.photoList=photoList
     this.route.navigate(['./routine-level-detail'],{
       queryParams:
       {
-        exercise:JSON.stringify(element)
+        levelExercise:JSON.stringify(levelExercise),
+        exercise:JSON.stringify(exercise)
       }});
   }
 

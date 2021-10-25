@@ -22,29 +22,22 @@
                         <h3>{{exercise.routineDescription}}</h3>
                         <h4> {{'workouts' | translate}}</h4>
                     </div>
-                    <div class="level">
-                            <ion-icon class="zmdi zmdi-flash active"></ion-icon>
-                            <ion-icon class="zmdi zmdi-flash"></ion-icon>
-                            <ion-icon class="zmdi zmdi-flash"></ion-icon>
-                        </div>
                     </div>
                         <div style="width: 100%;">
                             <app-accordian  title= "{{'levels' | translate}}" >
                                 <ion-list   *ngFor="let level of exercise.levels"  lines="none" style="display: flex;width: 100%;">
-                                    <ion-item   class="animate__animated animate__fadeInUp" style="display: flex;width: 100%;" (click)="showAr(level,exercise.idExcercise)">
-                                      <div style="display: flex;width: 100%;">
-                                          <div class="img_box center_img">
+                                    <ion-item   class="animate__animated animate__fadeInUp" style="display: flex;width: 100%;" (click)="showAr(level,exercise)">
+                                        <div style="display: flex;width: 100%;">
+                                            <div class="img_box center_img">
                                               <img [src]='level.photo' class="crop_img">
-                                          </div>
-                                          <div style="margin-left: 2vw;" class="text_box">
+                                            </div>
+                                            <div style="margin-left: 2vw;" class="text_box">
                                               <h3>{{level.name}}</h3>
                                               <h4 style="color: white;"> {{level.description}}</h4>
-                                          </div>
-                                          <div class="level">
-                                            <ion-icon class="zmdi zmdi-flash active"></ion-icon>
-                                            <ion-icon class="zmdi zmdi-flash"></ion-icon>
-                                            <ion-icon class="zmdi zmdi-flash"></ion-icon>
-                                          </div>
+                                            </div>
+                                            <div class="level">
+                                                <ion-icon  *ngFor='let in of counter(level.powerQuantity) ;let i = index' class="zmdi zmdi-flash active"></ion-icon>
+                                            </div>
                                       </div>
                                     </ion-item>
                                 </ion-list>
@@ -53,35 +46,6 @@
                     </div>
             </ion-item>
     </ion-list>
-
-   
-       
-    
-    <!--<div  *ngFor='let iterator of this.routineCategoryService?.categoriesByMachineAndRoutine?.objModel'  lines="none">
-        <div class="silder_box" style="margin: 6vw!important;border-radius: 5px;">
-            <h5 style="color: #ffffff; text-align: center;">{{iterator.routineDescription}}</h5>
-            <ion-slides pager="false" [options]="slideOptions2" #slideWithNav >
-                <ion-slide *ngFor="let level of iterator.levels"  >
-                    <div style="display: flex;padding: 2vw;" >
-                        <div >
-                            <img [src]='level.photo' style="object-fit: fill;border-radius: 5px;">
-                        </div>  
-                        <div class="text_box" style="font-size: 1rem!important;">
-                            <div style="margin-top: 4vh;">
-                                <p style="color: #ffffff;">{{level.description}}</p>
-                            <p style="color: #ffffff;">{{'repetitions' | translate}} <br>{{level.repetitions}}</p>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </ion-slide>
-            </ion-slides>
-            <div class="slides_btn d-flex">
-                <ion-icon class="zmdi zmdi-chevron-left ion-text-center" (click)="slidePrev(sliderOne,slideWithNav)" [class.disabled]="sliderOne.isBeginningSlide"></ion-icon>
-                <ion-icon class="zmdi zmdi-chevron-right ion-text-center end" (click)="slideNext(sliderOne,slideWithNav)" [class.disabled]="sliderOne.isEndSlide"></ion-icon>
-            </div>
-        </div>
-    </div>-->
 </ion-content>
 <ion-footer class="ion-no-border animate__animated animate__fadeInUp">
   <ion-button size="large" expand="full" class="btn" (click)="start_workout()">{{'let_starts' | translate}}</ion-button>

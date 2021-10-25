@@ -54,6 +54,8 @@ export class ObjectDetectionPage implements OnInit {
     let responseImagePredicted = await this.ProcessingImage(response.Base64);
     this.tag = await this.GetRoutinesByMachineString(responseImagePredicted)
     return this.tag;
+    /*this.tag=await this.GetRoutinesByMachineString("2_dumbell")
+    return "2_dumbell";*/
   }
 
 

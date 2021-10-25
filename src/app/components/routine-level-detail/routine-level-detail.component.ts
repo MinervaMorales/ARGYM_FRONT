@@ -13,17 +13,21 @@ export class RoutineLevelDetailComponent implements OnInit {
   @ViewChild('slideWithNav', { static: false }) slideWithNav: IonSlides;
   sliderOne: any;
   ngOnInit() {
+    console.log("levelExercise :")
+    console.log(this.levelExercise)
     console.log("exercise :")
     console.log(this.exercise)
   }
 
   public routineCategoryService: RoutineCategoryService=this.injector.get(RoutineCategoryService);
+  public levelExercise: any;
   public exercise: any;
   public constructor(private router: Router,private route: ActivatedRoute,protected injector: Injector) {
 
     this.route.queryParams.subscribe(params =>{
       if(params)
       {
+        this.levelExercise = JSON.parse(params['levelExercise']);
         this.exercise = JSON.parse(params['exercise']);
       }
     })
@@ -248,7 +252,7 @@ export class RoutineLevelDetailComponent implements OnInit {
   this.router.navigate(['./start-workout'],{
     queryParams:
     {
-      exercise:JSON.stringify(this.exercise)
+      exercise:JSON.stringify(this.levelExercise)
     }});
   } 
 

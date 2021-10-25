@@ -11,13 +11,17 @@
 
 <ion-content class="bg_img " fullscreen>
   <div class="silder_box">
-      <ion-slides  pager="false" [options]="slideOptions" #slideWithNav (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
-          <ion-slide *ngFor="let element of exercise.photoList ">
+    <h2 style="color: #ffff;" class="ion-text-center">{{exercise?.routineDescription}} </h2>   
+    <ion-slides  pager="false" [options]="slideOptions" #slideWithNav (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+         
+        <ion-slide *ngFor="let element of levelExercise.photoList ">
+            
               <div class="slide_inner">
-                  <div class="img_box">
+                
+                  <div style="margin-left: 2rem;" class="img_box">
                       <img [src]='element.photo'>
                   </div>
-                  <h2 class="ion-text-center">Desmostration <span>x12</span></h2>
+                  
               </div>
           </ion-slide>
           
@@ -32,7 +36,7 @@
 
   <div class="text-container animate__animated animate__fadeInUp">
       <!--        <h2>24 March 18</h2>-->
-      <p>{{exercise.description}}</p>
+      <p>{{levelExercise.description}}</p>
   </div>
 </ion-content>
 
