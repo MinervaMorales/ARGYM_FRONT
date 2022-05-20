@@ -3,7 +3,8 @@ import { SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AudioPlayerComponent } from '../components/audio-player/audio-player.component';
 import { DomSanitizer } from '@angular/platform-browser';
-import { LoadingController, Platform } from '@ionic/angular';
+import { AlertController, LoadingController, NavController, Platform } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-start-workout',
@@ -35,11 +36,16 @@ export class StartWorkoutPage implements OnInit {
   private route: ActivatedRoute = this.injector.get(ActivatedRoute);
   public domSanitizer: DomSanitizer = this.injector.get(DomSanitizer);
   private loading: LoadingController = this.injector.get(LoadingController);
+  private alertCtrl: AlertController = this.injector.get(AlertController);
+  public translate: TranslateService = this.injector.get( TranslateService );
 
-  public constructor(protected injector: Injector) {
+
+  public constructor(protected injector: Injector, private navCtrl: NavController) {
     this.route.queryParams.subscribe(params => {
       if (params) {
         this.exercise = JSON.parse(params['exercise']);
+        console.log("Expected exercise");
+        console.log(this.exercise)
       }
     })
   }
@@ -55,13 +61,37 @@ export class StartWorkoutPage implements OnInit {
       this.iframeScene?.nativeElement?.contentWindow?.postMessage(this.exercise.model3D, '*');
     }, 5000);
   }
+  public ngOnDestroy(){
+    console.log("on destroy start-workout!!!");
+    window.removeEventListener("message",
+    this.listener, false)
+    this.audioPlayer?.stop();
+
+  }
 
   public ionViewWillLeave() {
+    console.log("on ionviewwillleave!!!!")
     window.removeEventListener("message", this.listener);
+    this.audioPlayer?.stop();
   }
 
   public rest() {
     this.router.navigate(['./rest']);
+  }
+
+  public async alert(){
+    console.log("testing");
+    await (await this.alertCtrl.create({
+      header: this.translate.instant('comfirm-exit-explanation'),
+      message: this.translate.instant('message-exit-explanation'),
+      buttons: [{ text: this.translate.instant("bt-cancel")  }, {
+        text: this.translate.instant("bt-ok"),
+        handler: ()=>{
+          console.log('handler');
+          this.navCtrl.back();
+        }
+      }]
+    })).present();
   }
 
 

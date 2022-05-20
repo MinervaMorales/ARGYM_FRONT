@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ExercisePhotos } from 'src/models/ExercisePhotos';
+import { RoutineCategory } from 'src/models/RoutineCategory';
+import { RoutineCategoryLevel } from 'src/models/RoutineCategoryLevel';
 import { RoutineCategoryLevelExerciseDTO } from 'src/services/dtos/RoutineCategoryLevelExerciseDTO';
 import { ExercisePhotosService } from 'src/services/exercise/exercise-photos.service';
 
@@ -14,6 +16,8 @@ import { ExercisePhotosService } from 'src/services/exercise/exercise-photos.ser
 export class WorkoutRoutineDetailPage implements OnInit {
  
   public exercise: RoutineCategoryLevelExerciseDTO;
+  public routineCategoryLevel: RoutineCategoryLevel;
+  public routineCategory: RoutineCategory;
   public exercisePhotosList: ExercisePhotos;
   public exercisePhotosService: ExercisePhotosService = this.injector.get(ExercisePhotosService);
   private alertCtrl: AlertController = this.injector.get(AlertController);
@@ -25,6 +29,8 @@ export class WorkoutRoutineDetailPage implements OnInit {
       if(params)
       {
         this.exercise = JSON.parse(params['exercise']);
+        this.routineCategory = JSON.parse(params['routineCategory']);
+        this.routineCategoryLevel = JSON.parse(params['routineCategoryLevel']);
         console.log(this.exercise);
       }
     })

@@ -2,7 +2,7 @@
   <ion-toolbar>
       <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
-            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+           <!-- <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>-->
       </ion-buttons>
       <ion-title>
           {{'detect-object' | translate}}
@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content class="ion-padding bg_img" fullscreen>
-  <ion-slides *ngIf='!flag' class="ionSlides" pager=true options={slideOpts}>
+  <ion-slides class="ionSlides" pager=true options={slideOpts}>
 
           <ion-slide>
             <div class="slide">
@@ -36,12 +36,8 @@
           <ion-slide>
             <img src="https://cdn2.iconfinder.com/data/icons/top-search/128/_Upload_arrow_up_Export-512.png"/>
             <h2>{{'ready' | translate}}</h2>
-            <!--<ion-button fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>-->
             <p>{{'readyTo' | translate}}</p>
-            <!--<ion-button *ngIf='flag' size="large" shape="full" class="btn" (click)="seeRoutines()">
-              {{'seeRoutines' | translate}}
-            </ion-button>-->
-            
+
           </ion-slide>
     </ion-slides>
     <div>
@@ -51,88 +47,6 @@
         </ion-fab-button>
       </ion-fab>
     </div>
-
-        
-      
-      <div *ngIf='flag' class="container animate__animated animate__fadeInUp">
-        <div>
-          <img [src]='tag?.equipment?.photo' alt="">
-        </div>
-        <div class="text_box" style="text-align: center;">
-          <h3>{{tag?.equipment?.name | translate }}</h3>
-        </div>
-        <br/>
-        <br/>
-        <div>
-          <p>{{tag?.equipment?.description | translate}}</p>
-        </div>
-        <br/>
-        <br/>
-        <ion-button *ngIf='flag' size="large" shape="full" class="btn" (click)="seeRoutines()">
-          {{'seeRoutines' | translate}}
-        </ion-button>
-      </div>
-        
-        <!--<div>
-          <h3>{{'routines' | translate}}</h3>
-          <div>
-            <ion-slides pager="false" [options]="slideOptions" #slideWithNav (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
-              <ion-slide *ngFor='let routine of tag?.routines' >
-                  <div class="slide_inner" (click)="SearchByMachineAndRoutineCategory(routine)">
-                    <h3 class="ion-text-center">{{routine.name}}</h3>  
-                      <div class="text_box img_box">
-                          <img [src]='routine.photo'>
-                      </div>
-                      <p>{{routine.description}}</p>
-                  </div>
-              </ion-slide>
-            </ion-slides>
-          </div>
-        </div>-->
         <ion-footer class="ion-no-border">
-         <!-- <ion-button size="large" shape="full" class="btn" (click)="seeRoutines()">
-              {{'seeRoutines' | translate}}
-          </ion-button>-->
       </ion-footer>
-      <!--</div>-->
-     
-    
-  
 </ion-content>
-
-<style>
-  .ionSlides {
-    height: 100%;
-    color: #ffffff;
-  }
-
-  .swiper-slide {
-    display: block;
-  }
-
-  .swiper-slide h2 {
-    margin-top: 2.8rem;
-  }
-
-  .swiper-slide img {
-    max-height: 50%;
-    max-width: 80%;
-    margin: 60px 0 40px;
-    pointer-events: none;
-  }
-
-  b {
-    font-weight: 500;
-  }
-
-  p {
-    padding: 0 40px;
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--ion-color-step-600, #ffffff);
-  }
-
-  p b {
-    color: var(--ion-text-color, #ffffff);
-  }
-</style>

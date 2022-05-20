@@ -40,6 +40,11 @@ export class AudioPlayerComponent implements OnInit {
     })
   }
 
+  public stop()
+  {
+      this.player.stop();
+  }
+
   /**
    * Method to pause and play 
    * the audio

@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
 
   public workouts() 
   {
-    this.route.navigate(['./workouts']);
+    this.route.navigate(['./routine-categories']);
   } 
 
   public toRecognize()

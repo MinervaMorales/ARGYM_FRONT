@@ -1,12 +1,10 @@
 <ion-card style="background-color: transparent;">
-  <div>
-    <ion-item button detail="false" class="animate__animated animate__fadeInUp" >
+    <ion-button size="large" expand="block" class="btn" (click)="toggleAccordion()">
       <ion-label>
-        <b style="color: #fff;">{{ title }}</b>
+        <b style="color: #ffffff;">{{ title }}</b>
       </ion-label>
-      <ion-icon slot="end" color="light" [name]="icon" (click)="toggleAccordion()"></ion-icon>
-    </ion-item>
-  </div>
+      <ion-icon slot="end" color="#ffffff" [name]="icon" (click)="toggleAccordion()"></ion-icon>
+    </ion-button>
   <ion-card-content  #expandWrapper>
     <ng-content></ng-content>
   </ion-card-content>

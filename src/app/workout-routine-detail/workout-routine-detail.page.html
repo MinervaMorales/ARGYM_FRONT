@@ -1,16 +1,44 @@
 <ion-header>
-  <app-slide #slide [objectList]="exercisePhotosList" [title]="exercise?.exercise" [text]="exercise?.repetitions"></app-slide>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{exercise?.exercise | titlecase}}
+    </ion-title>
+  </ion-toolbar>
+  <app-slide #slide [objectList]="exercisePhotosList" [title]="exercise?.exercise" [text]="exercise?.repetitions">
+  </app-slide>
+
+
 </ion-header>
 
 <ion-content class="bg_img " fullscreen>
   <div style="height: 100%;" class="text-container animate__animated animate__fadeInUp">
-      <p>
-          {{exercise?.exerciseDescription}}
-      </p>
+    <div class="container  animate__animated animate__zoomIn">
+      <div class="ion-text-center">
+    <h4>{{'instructions' | translate }}</h4>
+      </div>
+    </div>
+    <div class="item_inner d-flex">
+      <div class="text_box">
+        <h6>{{'reps' | translate }}: x{{exercise?.repetitions}}</h6>
+        <h6>{{'rest' | translate }}: {{exercise?.time}} {{'min' | translate}}</h6>
+        <h6>{{'intensity-level' | translate }}: {{routineCategoryLevel?.name}}</h6>
+        <h6>{{'body-part' | translate }}: {{routineCategory?.name}}</h6>
+      
+      </div>
+    </div>
+    
+    <h4>{{'steps' | translate }}:</h4>
+    <p>
+      {{exercise?.exerciseDescription}}
+    </p>
   </div>
 </ion-content>
 
 
 <ion-footer class="ion-no-border animate__animated animate__fadeInUp">
-  <ion-button size="large" expand="full" class="btn" (click)="start_workout(exercise)">{{'let_starts' | translate}}</ion-button>
+  <ion-button size="large" expand="full" class="btn" (click)="start_workout(exercise)">{{'let_starts' | translate}}
+  </ion-button>
 </ion-footer>

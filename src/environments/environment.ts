@@ -4,9 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiURL: 'https://localhost:44300'  
-  apiURL: 'https://192.168.1.101:5001',
-  apiNeural: 'http://192.168.0.100:5000'
+  apiURL: 'https://172.16.0.5:5001',  
+  apiNeural: 'http://172.16.0.5:5000'
 };
 
 /*

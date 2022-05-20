@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     }, 
     {
       title: 'routines',
-      url: '/workouts',
+      url: '/routine-categories',
       icon: 'zmdi zmdi-run'
     },
     {
@@ -43,11 +43,7 @@ export class AppComponent implements OnInit {
       url: '/object-detection',
       icon: 'zmdi zmdi-camera'
     },
-     {
-      title: 'logout',
-      url: '/sign-in',
-      icon: 'zmdi zmdi-sign-in'
-    }, 
+  
     /* {
       title: 'blogs',
       url: '/blogs',
@@ -57,12 +53,17 @@ export class AppComponent implements OnInit {
       title: 'privacy_policy',
       url: '/privacy-policy',
       icon: 'zmdi zmdi-alert-circle'
-    }, 
+    }, */
      {
       title: 'change_language',
       url: '/change-language',
       icon: 'zmdi zmdi-globe'
-    }*/
+    },
+    {
+      title: 'logout',
+      url: '/sign-in',
+      icon: 'zmdi zmdi-sign-in'
+    } 
     ];
   constructor(
     @Inject(APP_CONFIG) public config: AppConfig,
@@ -146,7 +147,9 @@ export class AppComponent implements OnInit {
 
   public async getUser()
   {
-    this.user = new Users(await this.storage.get( 'USER' ));
+    //this.user = new Users(await this.storage.get( 'USER' ));
+    console.log(window.localStorage.getItem('USER'));
+    this.user = JSON.parse(window.localStorage.getItem('USER'));
   }
 
   public async presentModal () 

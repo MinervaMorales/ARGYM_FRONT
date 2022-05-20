@@ -103,7 +103,15 @@ const routes: Routes = [
   {
     path: 'routine-level-detail',
     loadChildren: () => import('./components/routine-level-detail/routine-level-detail.module').then( m => m.RoutineLevelDetailModule)
+  },  {
+    path: 'equipment-detected-detail',
+    loadChildren: () => import('./equipment-detected-detail/equipment-detected-detail.module').then( m => m.EquipmentDetectedDetailPageModule)
+  },
+  {
+    path: 'exercise-levels',
+    loadChildren: () => import('./exercise-levels/exercise-levels.module').then( m => m.ExerciseLevelsPageModule)
   }
+
 
 ];
 

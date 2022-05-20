@@ -11,13 +11,13 @@
                       <div class="level end">
                           <h4 class="ion-text-end">{{"lavel" | translate}}</h4>
                           <span class="end">
-                              <ion-icon class="zmdi zmdi-flash ion-text-end active"></ion-icon>
-                              <ion-icon class="zmdi zmdi-flash ion-text-end active"></ion-icon>
-                              <ion-icon class="zmdi zmdi-flash ion-text-end"></ion-icon>
+                            <ion-icon class="zmdi zmdi-flash ion-text-end active"></ion-icon>
+                            <ion-icon [ngClass]="(routineCategoryLevel?.name =='Nivel medio' || routineCategoryLevel?.name =='Nivel alto') ? 'zmdi zmdi-flash ion-text-end active': 'zmdi zmdi-flash ion-text-end'"></ion-icon>
+                            <ion-icon [ngClass]="routineCategoryLevel?.name == 'Nivel alto' ? 'zmdi zmdi-flash ion-text-end active': 'zmdi zmdi-flash ion-text-end'"></ion-icon>
                           </span>
                       </div>
                   </div>
-                  <h5>11 {{'workouts' | translate}}</h5>
+                  <h5>{{exerciseList?.length}} {{'workouts' | translate}}</h5>
               </div>
           </ion-title>
       </div>

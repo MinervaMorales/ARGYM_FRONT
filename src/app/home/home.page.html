@@ -6,7 +6,6 @@
         <ion-title>
             <div class="title-inner d-flex">
                 Gym<span>my</span>
-                <ion-icon class="zmdi zmdi-alarm ion-text-end end" (click)="alarm()"></ion-icon>
             </div>
         </ion-title>
     </ion-toolbar>
@@ -15,21 +14,14 @@
 
 <ion-content class="bg_img" fullscreen>
     <ion-list lines="none">
-        <h2>View <span>{{'workout' | translate}}</span></h2>
+        <h2>{{'view-workout' | translate}} <span>{{'workout-1' | translate}}</span></h2>
         <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
             <div class="item_inner d-flex">
                 <div class="img_box center_img">
                     <img src="assets/imgs/img-1.png" class="crop_img">
                 </div>
                 <div class="text_box">
-                    <h3>First person<br>Trainning</h3>
-                    <h4>13 {{'workouts' | translate}}</h4>
-                </div>
-
-                <div class="level">
-                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
-                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
-                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <h3>{{'first-person' | translate}}</h3>
                 </div>
             </div>
         </ion-item>
@@ -41,20 +33,13 @@
                 </div>
 
                 <div class="text_box">
-                    <h3>Third person<br>Trainning</h3>
-                    <h4>13 {{'workouts' | translate}}</h4>
-                </div>
-
-                <div class="level">
-                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
-                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
-                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
+                    <h3>{{'third-person' | translate}}</h3>
                 </div>
             </div>
         </ion-item>
         
         
-        <h2>Recognize <span>{{'workout' | translate}}</span></h2>
+        <h2>{{'recognize' | translate }} <span>{{'workout-1' | translate}}</span></h2>
         
 
         <ion-item class="animate__animated animate__fadeInUp" (click)="routineCategories()">
@@ -63,14 +48,7 @@
                     <img src="assets/imgs/img-9.png" class="crop_img">
                 </div>
                 <div class="text_box">
-                    <h3>Routines</h3>
-                    <h4>11 {{'workouts' | translate}}</h4>
-                </div>
-
-                <div class="level">
-                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
-                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
-                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <h3>{{'routines' | translate}}</h3>
                 </div>
             </div>
         </ion-item>
@@ -80,34 +58,9 @@
                     <img src="assets/imgs/img-3.png" class="crop_img">
                 </div>
                 <div class="text_box">
-                    <h3>Recognize Equipment</h3>
-                    <h4>11 {{'workouts' | translate}}</h4>
-                </div>
-
-                <div class="level">
-                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
-                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
-                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
+                    <h3>{{'detect-object' | translate}}</h3>
                 </div>
             </div>
         </ion-item>
-       <!-- <h2>Configurations <span>{{'workout' | translate}}</span></h2>
-        <ion-item class="animate__animated animate__fadeInUp" (click)="workouts()">
-            <div class="item_inner d-flex">
-                <div class="img_box center_img">
-                    <img src="assets/imgs/2.png" class="crop_img">
-                </div>
-                <div class="text_box">
-                    <h3>Settings</h3>
-                    <h4>11 {{'workouts' | translate}}</h4>
-                </div>
-
-                <div class="level">
-                    <ion-icon class="zmdi zmdi-flash active"></ion-icon>
-                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
-                    <ion-icon class="zmdi zmdi-flash"></ion-icon>
-                </div>
-            </div>
-        </ion-item>-->
     </ion-list>
 </ion-content>

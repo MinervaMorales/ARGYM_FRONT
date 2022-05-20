@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{'equipment-machine' | translate}}
+    </ion-title>
+</ion-toolbar>
+
+  
+</ion-header>
+
+<ion-content class="bg_img container animate__animated" fullscreen>
+  <div style="height: 100%;" class="text-container animate__animated">
+    <img  [src]='equipmentDetected?.equipment?.photo'>
+    <br>
+    <div class="text_box" style="text-align: center;">
+      <h1>{{equipmentDetected?.equipment?.name | translate }}</h1>
+    </div>
+      <p>
+          {{equipmentDetected?.equipment?.description | translate}}
+      </p>
+  </div>
+</ion-content>
+
+
+<ion-footer class="ion-no-border animate__animated">
+  <ion-button size="large" expand="full" class="btn" (click)="seeRoutines()">{{'seeRoutines' | translate}}</ion-button>
+</ion-footer>
+

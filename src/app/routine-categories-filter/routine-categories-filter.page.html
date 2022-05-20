@@ -1,13 +1,10 @@
 <ion-header>
   <ion-toolbar>
       <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
+        <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
       </ion-buttons>
       <ion-title>
-          <div class="title-inner d-flex">
-              Gym<span>my</span>
-              <ion-icon class="zmdi zmdi-alarm ion-text-end end"></ion-icon>
-          </div>
+        {{'routines-of' | translate}}{{routineCategoryList?.equipment?.name | translate }}
       </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -23,18 +20,10 @@
                     </div>
                     <div style="margin-left: 2vw;" class="text_box">
                         <h3>{{routine.description}}</h3>
-                        <h4> {{'workouts' | translate}}</h4>
                     </div>
-                    <div class="level">
-                            <ion-icon class="zmdi zmdi-flash active"></ion-icon>
-                            <ion-icon class="zmdi zmdi-flash"></ion-icon>
-                            <ion-icon class="zmdi zmdi-flash"></ion-icon>
-                        </div>
+              
                     </div>
                 </div>
             </ion-item>
     </ion-list>
 </ion-content>
-<ion-footer class="ion-no-border animate__animated animate__fadeInUp">
-  <ion-button size="large" expand="full" class="btn" (click)="start_workout()">{{'let_starts' | translate}}</ion-button>
-</ion-footer>

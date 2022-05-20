@@ -35,6 +35,9 @@ export class SignInPage implements OnInit {
   }
 
   ngOnInit() {
+    
+    this.storage.clear();
+    window.localStorage.setItem('TOKEN', null);
     this.buildForm();
   } 
   
@@ -69,6 +72,7 @@ export class SignInPage implements OnInit {
     try
     {
       let response = await (await this.userService.Login( this.user )).objModel.access_Token;
+      window.localStorage.setItem('TOKEN', response);
       this.storage.set( 'TOKEN', response );
       this.saveUser(response);
       this.loading.dismiss();
@@ -78,10 +82,12 @@ export class SignInPage implements OnInit {
     {
       console.log(e);
       this.loading.dismiss();
+      let title = e.status == 400 ? 'invalid-data': 'error';
+      let message = e.status == 400 ? 'try-again': 'unexpected';
 
       await (await this.alertCtrl.create({
-        header: this.translate.instant('invalid-data'),
-        message: this.translate.instant('try-again'),
+        header: this.translate.instant(title),
+        message: this.translate.instant(message),
         buttons: [{ text: this.translate.instant( "bt-ok" )}]
       })).present();
     }
@@ -98,7 +104,7 @@ export class SignInPage implements OnInit {
     user.email = userData[2];
     user.photo = userData[3];
     this.storage.set( 'USER', user );
-
+    window.localStorage.setItem('USER', JSON.stringify(user));
     this.event.setUserData(user);
   }
 

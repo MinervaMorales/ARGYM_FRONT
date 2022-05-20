@@ -9,6 +9,7 @@ import { ImageProcessingService } from 'src/services/ImageProcessing/image-proce
 import { LoaderService } from 'src/services/loader/loader.service';
 import { ObjectDetectionImage } from 'src/common/const/value';
 import { Picture } from 'src/common/utilities/picture';
+import { imageBase64 } from 'src/common/const/imageBase64';
 
 
 const slideOpts = {
@@ -24,9 +25,7 @@ const slideOpts = {
 export class ObjectDetectionPage implements OnInit {
 
   //Variable that holds the selected machine
-  public tag: any;
-  //Variable that indicates whether or not the ai detected a valid machine
-  public flag: boolean;
+  public equipmentDetected: any;
   //Variable that holds the list of routines given a machine
   public routinesByMachine: any[];
   //Variable that indicates the selected machine
@@ -34,64 +33,72 @@ export class ObjectDetectionPage implements OnInit {
 
   private route: Router = this.injector.get(Router);
   private alertCtrl: AlertController = this.injector.get(AlertController);
-  public loading: LoadingController = this.injector.get(LoadingController);
   public translate: TranslateService = this.injector.get(TranslateService);
   public routineCategoryService: RoutineCategoryService = this.injector.get(RoutineCategoryService);
   public imageProcessingService: ImageProcessingService = this.injector.get(ImageProcessingService);
   private ionLoader: LoaderService = this.injector.get(LoaderService);
-  private picture: Picture = this.injector.get(Picture);
- 
+  //private picture: Picture = this.injector.get(Picture);
+
   public constructor(protected injector: Injector) {
   }
 
   ngOnInit() {
+    
+    window.localStorage.setItem('IMAGE_PREDICTED', null);
   }
 
   public async getPicture(): Promise<string> {
 
-    const response = await this.picture.getObjectDetectionImage();
-    let responseImagePredicted = await this.ProcessingImage(response.Base64);
-    this.tag = await this.GetRoutinesByMachineString(responseImagePredicted)
-    return this.tag;
+    try {
+      //const response = await this.picture.getObjectDetectionImage();
+      this.ionLoader.showLoader();
+      let responseImagePredicted = await this.ProcessingImage(imageBase64.DUMBBELL);//response.Base64
+      if(responseImagePredicted){
+        if (responseImagePredicted.split('_')[0] != '0') {
+          window.localStorage.setItem('IMAGE_PREDICTED', responseImagePredicted);
+          this.equipmentDetected = await this.GetRoutinesByMachineString(responseImagePredicted)
+          await this.ionLoader.hideLoader();
+          
+          this.goToEquipmentDetectedDetail();
+        } else{
+          this.ionLoader.hideLoader();
+          await (await this.alertCtrl.create({
+            header: this.translate.instant('error'),
+            message: this.translate.instant('image-not-found'),
+            buttons: [{ text: this.translate.instant("bt-ok") }]
+          })).present();
+        }
+      } else{
+        await this.ionLoader.hideLoader();
+      }
+      
+
+    }
+    catch (e) {
+      console.log(e);
+      this.ionLoader.hideLoader();
+      await (await this.alertCtrl.create({
+        header: this.translate.instant('error'),
+        message: this.translate.instant('unexpected'),
+        buttons: [{ text: this.translate.instant("bt-ok") }]
+      })).present();
+    }
+    return this.equipmentDetected;
   }
 
 
   public async GetRoutinesByMachineString(str: string) {
-
-    this.ionLoader.showLoader();
-    try {
-
       this.routinesByMachine = await (await this.routineCategoryService.GetByMachineWithString(str)).objModel;
-      this.flag = true;
-      this.ionLoader.hideLoader();
       return this.routinesByMachine;
-
-    }
-    catch (e) {
-
-      console.log(e);
-      this.ionLoader.hideLoader();
-
-      return await (await this.alertCtrl.create({
-        header: this.translate.instant('error'),
-        message: this.translate.instant('unexpected'),
-        buttons: [{ text: this.translate.instant("bt-ok") }]
-      })).present();
-    }
   }
 
   public async ProcessingImage(response: string) {
-    (await this.loading.create()).present;
     try {
-      
+
       this.responseImagePredicted = await (await this.imageProcessingService.PredictImage({ image: response }));
-      this.loading.dismiss();
       return this.responseImagePredicted;
     }
     catch (e) {
-
-      this.loading.dismiss();
-
       return await (await this.alertCtrl.create({
         header: this.translate.instant('error'),
         message: this.translate.instant('unexpected'),
@@ -100,15 +107,8 @@ export class ObjectDetectionPage implements OnInit {
     }
   }
 
-  public SearchByMachineAndRoutineCategory(routine) {
-
-    console.log(routine)
-    console.log(this.tag?.objModel)
-
-  }
-
-  public seeRoutines() {
-    this.route.navigate(['./routine-categories-filter'])
+  public goToEquipmentDetectedDetail() {
+    this.route.navigate(['./equipment-detected-detail'], { queryParams: { equipmentDetected: JSON.stringify(this.equipmentDetected) } })
   }
 
 

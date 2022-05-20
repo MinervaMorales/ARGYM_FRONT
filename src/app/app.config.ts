@@ -12,32 +12,8 @@ export const BaseAppConfig: AppConfig = {
 		code: 'en',
 		name: 'English'
 	}, {
-		code: 'ar',
-		name: 'Arabic'
-	}, {
 		code: 'es',
 		name: 'Spanish'
-	}, {
-		code: 'fr',
-		name: 'French'
-	}, {
-		code: 'id',
-		name: 'Indonesian'
-	}, {
-		code: 'pt',
-		name: 'Portuguese'
-	},
-	{
-		code: 'tr',
-		name: 'Turkish'
-	},
-	{
-		code: 'it',
-		name: 'Italian'
-	},
-	{
-		code: 'sw',
-		name: 'Swahili'
 	}],
 	demoMode: true
 };
