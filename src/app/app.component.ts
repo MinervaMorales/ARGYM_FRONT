@@ -147,9 +147,9 @@ export class AppComponent implements OnInit {
 
   public async getUser()
   {
-    //this.user = new Users(await this.storage.get( 'USER' ));
+   // this.user = new Users(await this.storage.get( 'USER' ));
     console.log(window.localStorage.getItem('USER'));
-    this.user = JSON.parse(window.localStorage.getItem('USER'));
+    this.user = new Users(JSON.parse(window.localStorage.getItem('USER')));
   }
 
   public async presentModal () 
