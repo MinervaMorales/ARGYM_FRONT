@@ -24,6 +24,11 @@ export class RoutineCategoryService {
     return await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/levels`).toPromise();
   }
 
+  public async GetWithLevelsType(type: number): Promise<ResponseDTO>
+  {
+    return await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/levels/${type}`).toPromise();
+  }
+
   public async GetById( id: number ): Promise<ResponseDTO>
   {
     return await this.http.get<ResponseDTO>( `${environment.apiURL}​/RoutineCategory/${id}` ).toPromise();
@@ -49,5 +54,10 @@ export class RoutineCategoryService {
   public async GetByRoutineCategoryLevel( idRoutineCategoryLevel: number ): Promise<ResponseDTO>
   {
     return await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/byRoutineCategoryLevel/${idRoutineCategoryLevel}`).toPromise();
+  }
+
+  public async GetByRoutineCategoryLevelType( idRoutineCategoryLevel: number, type: any ): Promise<ResponseDTO>
+  {
+    return await this.http.get<ResponseDTO>( `${environment.apiURL}/RoutineCategory/byRoutineCategoryLevel/${idRoutineCategoryLevel}/${type}`).toPromise();
   }
 }

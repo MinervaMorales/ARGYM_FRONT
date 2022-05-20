@@ -110,6 +110,14 @@ const routes: Routes = [
   {
     path: 'exercise-levels',
     loadChildren: () => import('./exercise-levels/exercise-levels.module').then( m => m.ExerciseLevelsPageModule)
+  },
+  {
+    path: 'first-person-training-routine-categories',
+    loadChildren: () => import('./first-person-training-routine-categories/first-person-training-routine-categories.module').then( m => m.FirstPersonTrainingRoutineCategoriesPageModule)
+  },
+  {
+    path: 'first-person-training-routine-category-level-workouts',
+    loadChildren: () => import('./first-person-training-routine-category-level-workouts/first-person-training-routine-category-level-workouts.module').then( m => m.FirstPersonTrainingRoutineCategoryLevelWorkoutsPageModule)
   }
 
 

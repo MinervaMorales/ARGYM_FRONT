@@ -49,4 +49,11 @@ export class HomePage implements OnInit {
   {
     this.route.navigate(['./routine-categories']);
   }
+  public firstPersonTraining(type){
+    this.route.navigate(['./first-person-training-routine-categories'], {
+      queryParams:
+      {
+        type:JSON.stringify(type)
+      }})
+  }
 }

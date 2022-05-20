@@ -37,7 +37,7 @@ export class ObjectDetectionPage implements OnInit {
   public routineCategoryService: RoutineCategoryService = this.injector.get(RoutineCategoryService);
   public imageProcessingService: ImageProcessingService = this.injector.get(ImageProcessingService);
   private ionLoader: LoaderService = this.injector.get(LoaderService);
-  //private picture: Picture = this.injector.get(Picture);
+  private picture: Picture = this.injector.get(Picture); //COMMENT
 
   public constructor(protected injector: Injector) {
   }
@@ -50,9 +50,9 @@ export class ObjectDetectionPage implements OnInit {
   public async getPicture(): Promise<string> {
 
     try {
-      //const response = await this.picture.getObjectDetectionImage();
+      const response = await this.picture.getObjectDetectionImage(); ///COMMENT
       this.ionLoader.showLoader();
-      let responseImagePredicted = await this.ProcessingImage(imageBase64.DUMBBELL);//response.Base64
+      let responseImagePredicted = await this.ProcessingImage(response.Base64);//imageBase64.DUMBBELL
       if(responseImagePredicted){
         if (responseImagePredicted.split('_')[0] != '0') {
           window.localStorage.setItem('IMAGE_PREDICTED', responseImagePredicted);
