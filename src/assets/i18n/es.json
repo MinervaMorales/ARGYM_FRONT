@@ -98,5 +98,10 @@
     "steps": "Pasos a Realizar",
     "comfirm-exit-explanation": "Salir",
     "message-exit-explanation": "Seguro que deseas salir de la explicación?",
-    "bt-cancel": "cancelar"
+    "bt-cancel": "cancelar",
+    "validate-equipment": "Confirmar Equipo Detectado",
+    "confirm-equipment-detected": "Confirmar Equipo Detectado",
+    "message-equipment-detected": "¿El equipo seleccionado se parece al equipo detectado?",
+    "bt-yes":"si",
+    "bt-no":"no"
 }

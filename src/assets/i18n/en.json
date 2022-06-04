@@ -98,5 +98,10 @@
     "steps": "Steps",
     "comfirm-exit-explanation": "Exit",
     "message-exit-explanation": "Are you sure you want to exit the explanation?",
-    "bt-cancel": "cancel"
+    "bt-cancel": "cancel",
+    "validate-equipment": "Validate Equipment Detection",
+    "confirm-equipment-detected": "Validate Equipment Detection",
+    "message-equipment-detected": "The selected equipment looks like the detected equipment?",
+    "bt-yes":"yes",
+    "bt-no":"no"
 }

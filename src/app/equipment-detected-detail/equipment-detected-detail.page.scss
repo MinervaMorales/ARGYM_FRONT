@@ -143,3 +143,16 @@ ion-footer{
 
     }
 }
+
+.btn-wrong{
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    height: 58px;
+    --background: rgba(127, 127, 127, 0.39) !important;
+    color: var(--white);
+    margin: 0;
+    --box-shadow: none;
+    text-transform: none;
+}
