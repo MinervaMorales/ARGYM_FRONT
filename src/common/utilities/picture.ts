@@ -56,7 +56,7 @@ export class Picture
         this.options.targetHeight = ObjectDetectionImage.HEIGHT;*/
         this.options.quality = ObjectDetectionImage.QUALITY;
         this.options.destinationType = this.camera.DestinationType.DATA_URL;
-        this.options.encodingType = this.camera.EncodingType.JPEG;
+        this.options.encodingType = this.camera.EncodingType.PNG;
         this.options.mediaType = this.camera.MediaType.PICTURE;
 
         return this.takePicture();
