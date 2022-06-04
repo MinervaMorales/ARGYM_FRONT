@@ -35,8 +35,8 @@ export class Picture
      */
     public async getProfilePicture(): Promise<string>
     {
-        this.options.targetWidth = Profile.WIDTH;
-        this.options.targetHeight = Profile.HEIGHT;
+        /*this.options.targetWidth = Profile.WIDTH;
+        this.options.targetHeight = Profile.HEIGHT;*/
         this.options.quality = Profile.QUALITY;
         this.options.sourceType = this.camera.PictureSourceType.PHOTOLIBRARY;
         this.options.mediaType = this.camera.MediaType.PICTURE;
@@ -52,8 +52,8 @@ export class Picture
     public async getObjectDetectionImage(): Promise<Photo>
     {
         this.options.sourceType = this.camera.PictureSourceType.CAMERA;
-        this.options.targetWidth = ObjectDetectionImage.WIDTH;
-        this.options.targetHeight = ObjectDetectionImage.HEIGHT;
+        /*this.options.targetWidth = ObjectDetectionImage.WIDTH;
+        this.options.targetHeight = ObjectDetectionImage.HEIGHT;*/
         this.options.quality = ObjectDetectionImage.QUALITY;
         this.options.destinationType = this.camera.DestinationType.DATA_URL;
         this.options.encodingType = this.camera.EncodingType.JPEG;
