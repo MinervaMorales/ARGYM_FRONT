@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiURL: 'https://172.16.0.5:5001',  
-  apiNeural: 'http://172.16.0.5:5000'
+  apiNeural: 'http://172.16.0.11:5000'
 };
 
 /*

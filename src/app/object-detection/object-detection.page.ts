@@ -53,12 +53,14 @@ export class ObjectDetectionPage implements OnInit {
       const response = await this.picture.getObjectDetectionImage(); ///COMMENT
       this.ionLoader.showLoader();
       let responseImagePredicted = await this.ProcessingImage(response.Base64);//imageBase64.DUMBBELL
+      console.log("BASE64");
+      console.log(response.Base64);
       if(responseImagePredicted){
         if (responseImagePredicted.split('_')[0] != '0') {
           window.localStorage.setItem('IMAGE_PREDICTED', responseImagePredicted);
           this.equipmentDetected = await this.GetRoutinesByMachineString(responseImagePredicted)
           await this.ionLoader.hideLoader();
-          
+        
           this.goToEquipmentDetectedDetail();
         } else{
           this.ionLoader.hideLoader();
