@@ -23,7 +23,7 @@
       </div>
   </ion-toolbar>
   <div class="workout_img center_img">
-      <img src="assets/imgs/workout_banner.png" class="crop_img">
+      <img src="assets/imgs/workout_banner.png" onerror="this.src = 'assets/imgs/Gymmy-05.png';" class="crop_img">
   </div>
 </ion-header>
 
@@ -32,7 +32,7 @@
       <ion-item class="animate__animated animate__fadeInUp" (click)="workout_detail(exercise)">
           <div class="item_inner d-flex">
               <div class="img_box">
-                  <img src="{{exercise.photo}}">
+                  <img src="{{exercise.photo}}" onerror="this.src = 'assets/imgs/Gymmy-05.png';">
               </div>
               <div class="text_box">
                   <h3>{{exercise.exercise}}</h3>

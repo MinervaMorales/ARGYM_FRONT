@@ -46,7 +46,7 @@ export class WorkoutRoutineDetailPage implements OnInit {
     this.loading.create();
     try
     {
-      this.exercisePhotosList = await (await this.exercisePhotosService.GetByIdExercise(this.exercise?.idExcercise)).objModel;    
+      this.exercisePhotosList = await (await this.exercisePhotosService.GetByIdExercise(this.exercise?.idExcercise)).objModel;
       console.log(this.exercisePhotosList);
     }
     catch ( e )

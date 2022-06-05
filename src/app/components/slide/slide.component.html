@@ -4,9 +4,8 @@
           <ion-slide *ngFor="let object of objectList">
               <div class="slide_inner">
                   <div class="img_box">
-                      <img src='{{object.photo}}'>
+                      <img src='{{object.photo}}' onerror="this.src = 'assets/imgs/Gymmy-05.png';" >
                   </div>
-                  <!--<h6 class="ion-text-center">{{title}} <span>x{{text}}</span></h6>-->
               </div>
           </ion-slide>
       </ion-slides>

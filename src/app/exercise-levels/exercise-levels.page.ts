@@ -44,12 +44,6 @@ export class ExerciseLevelsPage implements OnInit {
 
 
   public async goToRoutineLevelDetail(element, idExercise){
-    console.log(idExercise)
-    console.log("Element---->")
-    console.log(element)
-    
-    console.log("exercise---->")
-    console.log(this.exercise)
     var photoList= (await this.exercisePhotoService.GetByIdExercise(idExercise)).objModel;
     element.photoList= photoList;
     this.route.navigate(['./routine-level-detail'],{ queryParams: { exercise: JSON.stringify(this.exercise), level: JSON.stringify(element) }});

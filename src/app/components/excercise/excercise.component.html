@@ -23,7 +23,7 @@
         <ion-item [id]="exercise?.id" class="animate__animated animate__fadeInUp" (click)="GetExerciseLevels(exercise)">
             <div class="item_inner d-flex">
                 <div class="img_box">
-                    <img src="{{exercise.photo}}">
+                    <img src="{{exercise.photo}}" onerror="this.src = 'assets/imgs/Gymmy-05.png';">
                 </div>
                 <div class="text_box">
                     <h3>{{exercise.routineDescription}}</h3>

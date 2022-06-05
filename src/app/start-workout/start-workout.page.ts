@@ -31,13 +31,13 @@ export class StartWorkoutPage implements OnInit {
 
   //Variable that hides and show the audioplayer component
   public displayAudio: boolean = false;
-  
-  private router: Router = this.injector.get(Router);  
+
+  private router: Router = this.injector.get(Router);
   private route: ActivatedRoute = this.injector.get(ActivatedRoute);
   public domSanitizer: DomSanitizer = this.injector.get(DomSanitizer);
   private loading: LoadingController = this.injector.get(LoadingController);
   private alertCtrl: AlertController = this.injector.get(AlertController);
-  public translate: TranslateService = this.injector.get( TranslateService );
+  public translate: TranslateService = this.injector.get(TranslateService);
 
 
   public constructor(protected injector: Injector, private navCtrl: NavController) {
@@ -57,36 +57,52 @@ export class StartWorkoutPage implements OnInit {
   }
 
   public ngAfterViewInit() {
-    setTimeout(() => {
-      this.iframeScene?.nativeElement?.contentWindow?.postMessage(this.exercise.model3D, '*');
-    }, 5000);
+    try {
+      setTimeout(() => {
+        this.iframeScene?.nativeElement?.contentWindow?.postMessage(this.exercise.model3D, '*');
+      }, 5000);
+    } catch (e) {
+      console.log(e);
+    }
+
   }
-  public ngOnDestroy(){
-    console.log("on destroy start-workout!!!");
-    window.removeEventListener("message",
-    this.listener, false)
-    this.audioPlayer?.stop();
+  public ngOnDestroy() {
+    try {
+      console.log("on destroy start-workout!!!");
+      window.removeEventListener("message",
+        this.listener, false)
+      if (this.audioPlayer) {
+        this.audioPlayer?.stop();
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
 
   }
 
   public ionViewWillLeave() {
-    console.log("on ionviewwillleave!!!!")
-    window.removeEventListener("message", this.listener);
-    this.audioPlayer?.stop();
+    try {
+      window.removeEventListener("message", this.listener);
+      if(this.audioPlayer){
+        this.audioPlayer?.stop();
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   public rest() {
     this.router.navigate(['./rest']);
   }
 
-  public async alert(){
-    console.log("testing");
+  public async alert() {
     await (await this.alertCtrl.create({
       header: this.translate.instant('comfirm-exit-explanation'),
       message: this.translate.instant('message-exit-explanation'),
-      buttons: [{ text: this.translate.instant("bt-cancel")  }, {
+      buttons: [{ text: this.translate.instant("bt-cancel") }, {
         text: this.translate.instant("bt-ok"),
-        handler: ()=>{
+        handler: () => {
           console.log('handler');
           this.navCtrl.back();
         }
@@ -100,9 +116,13 @@ export class StartWorkoutPage implements OnInit {
    * within the iframe to pause or play the music
    */
   public async modelStatusListener() {
-
-    window.addEventListener("message",
-      this.listener, false)
+    try {
+      window.addEventListener("message",
+        this.listener, false)
+    }
+    catch (e) {
+      console.log(e);
+    }
   }
 
   /**
@@ -113,27 +133,38 @@ export class StartWorkoutPage implements OnInit {
    * @param res 
    */
   listener = async (res) => {
+    try {
+      if (res.data == 'loadingModel') {
+        (await this.loading.create({
+          message: 'Please wait while the model is loading...'
+        })).present();
 
-    if (res.data == 'loadingModel') {
-      (await this.loading.create({
-        message: 'Please wait while the model is loading...'
-      })).present();
+      }
 
-    }
+      if (res.data == 'markerFound') {
+        this.displayAudio = true;
+      }
 
-    if (res.data == 'markerFound') {
-      this.displayAudio = true;
-    }
+      if (res.data == 'true' || res.data == 'false') {
+        let playing: boolean = JSON.parse(res.data);
+        this.displayAudio = playing;
+        this.audioPlayer?.togglePlayer(!playing);
 
-    if (res.data == 'true' || res.data == 'false') {
-      let playing: boolean = JSON.parse(res.data);
-      this.displayAudio = playing;
-      this.audioPlayer?.togglePlayer(!playing);
-
-      if (await this.loading.getTop() != null || await this.loading.getTop() != undefined) {
-        this.loading.dismiss();
+        if (await this.loading.getTop() != null || await this.loading.getTop() != undefined) {
+          this.loading.dismiss();
+        }
       }
     }
+    catch (e) {
+      console.log(e);
+      
+      await (await this.alertCtrl.create({
+        header: this.translate.instant('error'),
+        message: this.translate.instant('unexpected'),
+        buttons: [{ text: this.translate.instant( "bt-ok" )}]
+      })).present();
+    }
+
   }
 
 
